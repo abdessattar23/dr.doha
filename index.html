@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Meta Tags -->
+    <title>Dr. Elodie Renaud - Ophtalmologue & Chirurgie Réfractive à Paris</title>
+    <meta name="description" content="Cabinet d'ophtalmologie du Dr. Elodie Renaud, expert en chirurgie réfractive (LASIK, SMILE, PKR) et soins oculaires modernes à Paris. Prenez rendez-vous pour une consultation.">
+    <meta name="author" content="Dr. Elodie Renaud">
+    <meta name="keywords" content="ophtalmologue paris, chirurgie réfractive, lasik, smile, pkr, correction vision, myopie, astigmatisme">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.drelodierenaud.fr/"> <!-- Replace with actual URL -->
+    <meta property="og:title" content="Dr. Elodie Renaud - Ophtalmologue & Chirurgie Réfractive à Paris">
+    <meta property="og:description" content="Soins oculaires de pointe et chirurgie laser pour une vision parfaite.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&q=80"> <!-- Replace with a representative image -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.drelodierenaud.fr/"> <!-- Replace with actual URL -->
+    <meta property="twitter:title" content="Dr. Elodie Renaud - Ophtalmologue & Chirurgie Réfractive à Paris">
+    <meta property="twitter:description" content="Soins oculaires de pointe et chirurgie laser pour une vision parfaite.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&q=80"> <!-- Replace with a representative image -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👁️</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js for interactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'theme-primary': '#0c4853',
+                        'theme-light': '#f0f7f8',
+                        'theme-accent': '#2dd4bf',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'display': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'slow-zoom': 'slow-zoom 5s linear infinite alternate',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        'slow-zoom': {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.2)' },
+                        },
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS for full-screen sections and animations -->
+    <style>
+        html {
+            scroll-snap-type: y mandatory;
+        }
+        section {
+            scroll-snap-align: start;
+            min-height: 100vh;
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-white font-sans text-gray-800 antialiased">
+    <!-- Main Container -->
+    <div x-data="{ scrolled: false }" @scroll.window="scrolled = (window.scrollY > 50)">
+
+        <!-- Header -->
+        <header x-data="{ 
+                    mobileMenuOpen: false, 
+                    servicesOpen: false, 
+                    chirurgieOpen: false,
+                    activeServiceTab: 'consultation',
+                    activeChirurgieTab: 'smile'
+                }"
+                :class="{ 'bg-theme-primary/90 backdrop-blur-sm shadow-lg': scrolled, 'bg-transparent': !scrolled }" 
+                class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#accueil" class="text-2xl font-display font-bold text-white">Dr. Hamidallah Doha </a>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-8 text-white font-medium">
+                    <a href="#a-propos" class="hover:text-theme-accent transition-colors">À propos</a>
+                    
+                    <!-- Services Dropdown -->
+                    <div class="relative" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
+                        <button class="flex items-center hover:text-theme-accent transition-colors">
+                            Services
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Services Mega Menu -->
+                        <div x-show="servicesOpen"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform scale-95"
+                             x-transition:enter-end="opacity-100 transform scale-100"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform scale-100"
+                             x-transition:leave-end="opacity-0 transform scale-95"
+                             class="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl overflow-hidden">
+                            <div class="flex">
+                                <!-- Tabs -->
+                                <div class="w-1/3 bg-theme-primary">
+                                    <button @click="activeServiceTab = 'consultation'" 
+                                            :class="{ 'bg-theme-accent text-white': activeServiceTab === 'consultation', 'text-white/80 hover:bg-white/10': activeServiceTab !== 'consultation' }"
+                                            class="w-full p-3 text-left text-sm font-medium transition-all">Consultation</button>
+                                    <button @click="activeServiceTab = 'diagnostic'" 
+                                            :class="{ 'bg-theme-accent text-white': activeServiceTab === 'diagnostic', 'text-white/80 hover:bg-white/10': activeServiceTab !== 'diagnostic' }"
+                                            class="w-full p-3 text-left text-sm font-medium transition-all">Diagnostic</button>
+                                    <button @click="activeServiceTab = 'traitement'" 
+                                            :class="{ 'bg-theme-accent text-white': activeServiceTab === 'traitement', 'text-white/80 hover:bg-white/10': activeServiceTab !== 'traitement' }"
+                                            class="w-full p-3 text-left text-sm font-medium transition-all">Traitement</button>
+                                    <button @click="activeServiceTab = 'pediatrique'" 
+                                            :class="{ 'bg-theme-accent text-white': activeServiceTab === 'pediatrique', 'text-white/80 hover:bg-white/10': activeServiceTab !== 'pediatrique' }"
+                                            class="w-full p-3 text-left text-sm font-medium transition-all">Pédiatrique</button>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div class="w-2/3 p-4 text-gray-800">
+                                    <div x-show="activeServiceTab === 'consultation'" x-transition.opacity.duration.300ms>
+                                        <h4 class="font-bold text-theme-primary mb-2">Consultation Générale</h4>
+                                        <p class="text-sm text-gray-600 mb-3">Examen complet de la vision et dépistage</p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>• Bilan visuel complet</li>
+                                            <li>• Prescription lunettes/lentilles</li>
+                                            <li>• Contrôle de routine</li>
+                                        </ul>
+                                        <a href="#services" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">Voir plus →</a>
+                                    </div>
+                                    
+                                    <div x-show="activeServiceTab === 'diagnostic'" x-transition.opacity.duration.300ms>
+                                        <h4 class="font-bold text-theme-primary mb-2">Diagnostic Avancé</h4>
+                                        <p class="text-sm text-gray-600 mb-3">Technologies modernes de diagnostic</p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>• OCT rétinien</li>
+                                            <li>• Champ visuel</li>
+                                            <li>• Tonométrie</li>
+                                        </ul>
+                                        <a href="#services" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">Voir plus →</a>
+                                    </div>
+                                    
+                                    <div x-show="activeServiceTab === 'traitement'" x-transition.opacity.duration.300ms>
+                                        <h4 class="font-bold text-theme-primary mb-2">Traitements Spécialisés</h4>
+                                        <p class="text-sm text-gray-600 mb-3">Prise en charge des pathologies</p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>• Glaucome</li>
+                                            <li>• DMLA</li>
+                                            <li>• Cataracte</li>
+                                        </ul>
+                                        <a href="#services" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">Voir plus →</a>
+                                    </div>
+                                    
+                                    <div x-show="activeServiceTab === 'pediatrique'" x-transition.opacity.duration.300ms>
+                                        <h4 class="font-bold text-theme-primary mb-2">Ophtalmologie Pédiatrique</h4>
+                                        <p class="text-sm text-gray-600 mb-3">Soins spécialisés pour enfants</p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>• Dépistage précoce</li>
+                                            <li>• Troubles de la vision</li>
+                                            <li>• Strabisme</li>
+                                        </ul>
+                                        <a href="#services" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">Voir plus →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chirurgie Dropdown -->
+                    <div class="relative" @mouseenter="chirurgieOpen = true" @mouseleave="chirurgieOpen = false">
+                        <button class="flex items-center hover:text-theme-accent transition-colors">
+                            Chirurgie
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Chirurgie Mega Menu -->
+                        <div x-show="chirurgieOpen"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform scale-95"
+                             x-transition:enter-end="opacity-100 transform scale-100"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform scale-100"
+                             x-transition:leave-end="opacity-0 transform scale-95"
+                             class="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl overflow-hidden">
+                            <div class="flex">
+                                <!-- Tabs -->
+                                <div class="w-1/3 bg-theme-primary">
+                                    <button @click="activeChirurgieTab = 'smile'" 
+                                            :class="{ 'bg-theme-accent text-white': activeChirurgieTab === 'smile', 'text-white/80 hover:bg-white/10': activeChirurgieTab !== 'smile' }"
+                                            class="w-full p-3 text-left text-sm font-medium transition-all">SMILE</button>
+                                    <button @click="activeChirurgieTab = 'lasik'" 
+                                            :class="{ 'bg-theme-accent text-white': activeChirurgieTab === 'lasik', 'text-white/80 hover:bg-white/10': activeChirurgieTab !== 'lasik' }"
+                                            class="w-full p-3 text-left text-sm font-medium transition-all">LASIK</button>
+                                    <button @click="activeChirurgieTab = 'pkr'" 
+                                            :class="{ 'bg-theme-accent text-white': activeChirurgieTab === 'pkr', 'text-white/80 hover:bg-white/10': activeChirurgieTab !== 'pkr' }"
+                                            class="w-full p-3 text-left text-sm font-medium transition-all">PKR</button>
+                                    <button @click="activeChirurgieTab = 'cataracte'" 
+                                            :class="{ 'bg-theme-accent text-white': activeChirurgieTab === 'cataracte', 'text-white/80 hover:bg-white/10': activeChirurgieTab !== 'cataracte' }"
+                                            class="w-full p-3 text-left text-sm font-medium transition-all">Cataracte</button>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div class="w-2/3 p-4 text-gray-800">
+                                    <div x-show="activeChirurgieTab === 'smile'" x-transition.opacity.duration.300ms>
+                                        <h4 class="font-bold text-theme-primary mb-2">SMILE</h4>
+                                        <p class="text-sm text-gray-600 mb-3">Technique laser mini-invasive</p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>• Sans volet cornéen</li>
+                                            <li>• Récupération rapide</li>
+                                            <li>• Idéal pour sportifs</li>
+                                        </ul>
+                                        <a href="#chirurgie-refractive" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">En savoir plus →</a>
+                                    </div>
+                                    
+                                    <div x-show="activeChirurgieTab === 'lasik'" x-transition.opacity.duration.300ms>
+                                        <h4 class="font-bold text-theme-primary mb-2">LASIK</h4>
+                                        <p class="text-sm text-gray-600 mb-3">Référence mondiale en chirurgie réfractive</p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>• Technique éprouvée</li>
+                                            <li>• Vision immédiate</li>
+                                            <li>• Très haute précision</li>
+                                        </ul>
+                                        <a href="#chirurgie-refractive" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">En savoir plus →</a>
+                                    </div>
+                                    
+                                    <div x-show="activeChirurgieTab === 'pkr'" x-transition.opacity.duration.300ms>
+                                        <h4 class="font-bold text-theme-primary mb-2">PKR</h4>
+                                        <p class="text-sm text-gray-600 mb-3">Sécurité maximale</p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>• Cornées fines</li>
+                                            <li>• Aucun risque de volet</li>
+                                            <li>• Résultats durables</li>
+                                        </ul>
+                                        <a href="#chirurgie-refractive" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">En savoir plus →</a>
+                                    </div>
+                                    
+                                    <div x-show="activeChirurgieTab === 'cataracte'" x-transition.opacity.duration.300ms>
+                                        <h4 class="font-bold text-theme-primary mb-2">Chirurgie de la Cataracte</h4>
+                                        <p class="text-sm text-gray-600 mb-3">Techniques modernes</p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>• Phacoémulsification</li>
+                                            <li>• Implants premium</li>
+                                            <li>• Vision claire</li>
+                                        </ul>
+                                        <a href="#chirurgie-refractive" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">En savoir plus →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#blog" class="hover:text-theme-accent transition-colors">Blog</a>
+                    <a href="#contact" class="hover:text-theme-accent transition-colors">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white z-50">
+                    <svg x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg x-show="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+
+                <!-- Mobile Menu -->
+                <div x-show="mobileMenuOpen" 
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 transform -translate-y-4"
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 transform translate-y-0"
+                     x-transition:leave-end="opacity-0 transform -translate-y-4"
+                     class="md:hidden absolute top-0 left-0 w-full h-screen bg-theme-primary flex flex-col items-center justify-center space-y-8 text-2xl text-white font-display"
+                     @click.away="mobileMenuOpen = false">
+                    <a @click="mobileMenuOpen = false" href="#a-propos" class="hover:text-theme-accent">À propos</a>
+                    <a @click="mobileMenuOpen = false" href="#services" class="hover:text-theme-accent">Services</a>
+                    <a @click="mobileMenuOpen = false" href="#chirurgie-refractive" class="hover:text-theme-accent">Chirurgie</a>
+                    <a @click="mobileMenuOpen = false" href="#blog" class="hover:text-theme-accent">Blog</a>
+                    <a @click="mobileMenuOpen = false" href="#contact" class="bg-theme-accent/80 text-white px-6 py-3 rounded-full">Contact</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- 1. Hero Section -->
+            <section id="accueil" class="relative flex items-center justify-center text-center text-white overflow-hidden">
+                <div class="absolute inset-0 bg-black animate-slow-zoom" style="background-image: url('./assets/hero.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="absolute inset-0 bg-theme-primary opacity-70"></div>
+                <div class="relative z-10 p-6" style="animation: fade-in-up 1.2s ease-out;">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-display leading-tight mb-4">Lorem ipsum dolor sit amet consectetur adipiscing elit.</h1>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    <a href="#contact" class="bg-theme-accent hover:bg-white hover:text-theme-primary text-theme-primary font-bold font-display py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                        Prendre rendez-vous
+                    </a>
+                </div>
+                <a href="#a-propos" class="absolute bottom-10 animate-bounce-slow">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+            </section>
+
+            <!-- 2. À propos de moi -->
+            <section id="a-propos" class="flex items-center justify-center bg-theme-light py-20 px-6">
+                <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="reveal-on-scroll">
+                        <img src="./assets/doctor-photo.jpg" alt="Dr. Elodie Renaud" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                    </div>
+                    <div class="reveal-on-scroll" style="transition-delay: 200ms;">
+                        <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary mb-4">Lorem Ipsum</h2>
+                        <h3 class="text-xl font-display text-gray-600 mb-6">Consectetur adipiscing elit sed do eiusmod.</h3>
+                        <p class="mb-6 text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-theme-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="font-semibold text-gray-800">Lorem ipsum dolor sit amet consectetur</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-theme-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18a7.5 7.5 0 000-15 7.5 7.5 0 000 15z"></path></svg>
+                                <span class="font-semibold text-gray-800">Adipiscing elit sed do eiusmod tempor incididunt</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-theme-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
+                                <span class="font-semibold text-gray-800">Ut labore et dolore magna aliqua enim ad minim</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Nos services -->
+            <section id="services" class="flex items-center justify-center bg-theme-primary text-white py-20 px-6">
+                <div class="container mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-12 reveal-on-scroll">Lorem Ipsum Dolor Sit Amet</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Card 1 -->
+                        <div class="bg-white/10 p-8 rounded-lg transform hover:-translate-y-2 transition-transform duration-300 reveal-on-scroll">
+                           <h3 class="text-xl font-bold font-display mb-2">Consectetur Adipiscing</h3>
+                           <p class="text-white/80">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="bg-white/10 p-8 rounded-lg transform hover:-translate-y-2 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 150ms;">
+                           <h3 class="text-xl font-bold font-display mb-2">Eiusmod Tempor</h3>
+                           <p class="text-white/80">Ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation.</p>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="bg-white/10 p-8 rounded-lg transform hover:-translate-y-2 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 300ms;">
+                           <h3 class="text-xl font-bold font-display mb-2">Ullamco Laboris</h3>
+                           <p class="text-white/80">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="bg-white/10 p-8 rounded-lg transform hover:-translate-y-2 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 450ms;">
+                           <h3 class="text-xl font-bold font-display mb-2">Excepteur Sint</h3>
+                           <p class="text-white/80">Occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 4. Chirurgie Réfractive -->
+            <section id="chirurgie-refractive" class="flex items-center justify-center bg-theme-light py-20 px-6" x-data="{ activeTab: 'smile' }">
+                <div class="container mx-auto">
+                    <div class="text-center mb-12">
+                         <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary reveal-on-scroll">Lorem Ipsum Dolor Sit Amet</h2>
+                         <p class="text-lg text-gray-600 mt-2 reveal-on-scroll">Consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-8 lg:gap-12 reveal-on-scroll">
+                        <!-- Tabs -->
+                        <div class="flex md:flex-col md:w-1/4">
+                             <button @click="activeTab = 'smile'" :class="{ 'bg-theme-primary text-white': activeTab === 'smile', 'text-gray-600 hover:bg-white': activeTab !== 'smile' }" class="text-left w-full p-4 font-bold font-display rounded-t-lg md:rounded-l-lg md:rounded-tr-none transition-all">SMILE</button>
+                             <button @click="activeTab = 'lasik'" :class="{ 'bg-theme-primary text-white': activeTab === 'lasik', 'text-gray-600 hover:bg-white': activeTab !== 'lasik' }" class="text-left w-full p-4 font-bold font-display transition-all">LASIK</button>
+                             <button @click="activeTab = 'pkr'" :class="{ 'bg-theme-primary text-white': activeTab === 'pkr', 'text-gray-600 hover:bg-white': activeTab !== 'pkr' }" class="text-left w-full p-4 font-bold font-display transition-all">PKR</button>
+                             <button @click="activeTab = 'autres'" :class="{ 'bg-theme-primary text-white': activeTab === 'autres', 'text-gray-600 hover:bg-white': activeTab !== 'autres' }" class="text-left w-full p-4 font-bold font-display rounded-b-lg md:rounded-bl-none md:rounded-l-lg transition-all">Autres Options</button>
+                        </div>
+                        <!-- Content -->
+                        <div class="md:w-3/4 bg-white p-8 rounded-b-lg md:rounded-r-lg shadow-lg min-h-[300px]">
+                            <div x-show="activeTab === 'smile'" x-transition.opacity.duration.500ms>
+                                <h3 class="text-2xl font-bold text-theme-primary mb-3">Lorem : Ipsum Dolor Sit</h3>
+                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                    <li>Duis aute irure dolor in reprehenderit</li>
+                                    <li>Voluptate velit esse cillum dolore</li>
+                                    <li>Excepteur sint occaecat cupidatat</li>
+                                </ul>
+                            </div>
+                            <div x-show="activeTab === 'lasik'" x-transition.opacity.duration.500ms>
+                                <h3 class="text-2xl font-bold text-theme-primary mb-3">Adipiscing : Elit Sed Do</h3>
+                                <p class="mb-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.</p>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                    <li>At vero eos et accusamus et iusto</li>
+                                    <li>Odio dignissimos ducimus qui blanditiis</li>
+                                    <li>Praesentium voluptatum deleniti atque</li>
+                                </ul>
+                            </div>
+                            <div x-show="activeTab === 'pkr'" x-transition.opacity.duration.500ms>
+                                <h3 class="text-2xl font-bold text-theme-primary mb-3">Tempor : Incididunt Ut Labore</h3>
+                                <p class="mb-4">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                    <li>Omnis voluptas assumenda est dolor</li>
+                                    <li>Repellendus temporibus autem quibusdam</li>
+                                    <li>Aut officiis debitis aut rerum necessitatibus</li>
+                                </ul>
+                            </div>
+                            <div x-show="activeTab === 'autres'" x-transition.opacity.duration.500ms>
+                                <h3 class="text-2xl font-bold text-theme-primary mb-3">Magna Aliqua et Consectetur</h3>
+                                <p class="mb-4">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                    <li>Ut enim ad minima veniam quis nostrum</li>
+                                    <li>Exercitationem ullam corporis suscipit</li>
+                                    <li>Laboriosam nisi ut aliquid ex ea commodi</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 5. Blog -->
+            <section id="blog" class="flex items-center justify-center bg-theme-primary text-white py-20 px-6">
+                 <div class="container mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-center mb-12 reveal-on-scroll">Lorem Ipsum Dolor Sit Amet</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Post Card 1 -->
+                        <div class="bg-white/10 rounded-lg overflow-hidden group reveal-on-scroll">
+                            <img src="https://images.unsplash.com/photo-1609619385012-10d37893334a?auto=format&fit=crop&w=600&q=80" alt="Blog post image" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="p-6">
+                                <span class="text-sm text-theme-accent font-semibold">LOREM</span>
+                                <h3 class="font-bold text-xl font-display my-2">Consectetur adipiscing elit sed do eiusmod</h3>
+                                <a href="#" class="font-semibold hover:text-theme-accent transition">Lire l'article →</a>
+                            </div>
+                        </div>
+                        <!-- Post Card 2 -->
+                        <div class="bg-white/10 rounded-lg overflow-hidden group reveal-on-scroll" style="transition-delay: 150ms;">
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Blog post image" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="p-6">
+                                <span class="text-sm text-theme-accent font-semibold">IPSUM</span>
+                                <h3 class="font-bold text-xl font-display my-2">Tempor incididunt ut labore et dolore magna</h3>
+                                <a href="#" class="font-semibold hover:text-theme-accent transition">Lire l'article →</a>
+                            </div>
+                        </div>
+                        <!-- Post Card 3 -->
+                        <div class="bg-white/10 rounded-lg overflow-hidden group reveal-on-scroll" style="transition-delay: 300ms;">
+                            <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=600&q=80" alt="Blog post image" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="p-6">
+                                <span class="text-sm text-theme-accent font-semibold">DOLOR</span>
+                                <h3 class="font-bold text-xl font-display my-2">Enim ad minim veniam quis nostrud exercitation</h3>
+                                <a href="#" class="font-semibold hover:text-theme-accent transition">Lire l'article →</a>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+            
+            <!-- This section is left for future use as per the plan -->
+            <!-- 6. Articles Scientifiques -->
+            <!-- <section id="articles" class="..."></section> -->
+
+            <!-- 7. Nous contacter -->
+            <section id="contact" class="flex items-center justify-center bg-theme-light py-20 px-6">
+                <div class="container mx-auto">
+                    <div class="text-center mb-12">
+                         <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary reveal-on-scroll">Lorem ipsum dolor sit amet consectetur</h2>
+                         <p class="text-lg text-gray-600 mt-2 reveal-on-scroll">Adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="grid lg:grid-cols-2 gap-10">
+                        <!-- Form -->
+                        <div class="bg-theme-primary p-8 lg:p-12 rounded-lg shadow-xl text-white reveal-on-scroll">
+                            <form action="YOUR_FORM_ENDPOINT" method="POST"> <!-- Replace with Formspree or Netlify Forms -->
+                                <div class="mb-5">
+                                    <label for="name" class="block mb-2 font-medium">Nom complet</label>
+                                    <input type="text" id="name" name="name" required class="w-full p-3 bg-white/20 rounded-md border border-transparent focus:bg-white focus:text-gray-800 focus:outline-none transition">
+                                </div>
+                                <div class="mb-5">
+                                    <label for="email" class="block mb-2 font-medium">Adresse e-mail</label>
+                                    <input type="email" id="email" name="email" required class="w-full p-3 bg-white/20 rounded-md border border-transparent focus:bg-white focus:text-gray-800 focus:outline-none transition">
+                                </div>
+                                 <div class="mb-5">
+                                    <label for="message" class="block mb-2 font-medium">Votre message</label>
+                                    <textarea id="message" name="message" rows="4" required class="w-full p-3 bg-white/20 rounded-md border border-transparent focus:bg-white focus:text-gray-800 focus:outline-none transition"></textarea>
+                                </div>
+                                <div class="mb-6 flex items-start">
+                                    <input type="checkbox" id="gdpr" name="gdpr" required class="h-5 w-5 mt-1 text-theme-accent bg-white/20 border-transparent rounded focus:ring-theme-accent">
+                                    <label for="gdpr" class="ml-3 text-sm text-white/80">En soumettant ce formulaire, j'accepte que les informations saisies soient utilisées pour me recontacter.</label>
+                                </div>
+                                <button type="submit" class="w-full bg-theme-accent hover:bg-white hover:text-theme-primary text-theme-primary font-bold font-display py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                                    Envoyer le message
+                                </button>
+                            </form>
+                            <div class="mt-8 text-center text-white/80">
+                                <p class="mb-2">Ou contactez-nous directement :</p>
+                                <a href="tel:+33123456789" class="font-semibold hover:text-white">Tél : 01 23 45 67 89</a> | 
+                                <a href="mailto:contact@drelodierenaud.fr" class="font-semibold hover:text-white">contact@drelodierenaud.fr</a>
+                            </div>
+                        </div>
+                        <!-- Map & Info -->
+                        <div class="flex flex-col reveal-on-scroll" style="transition-delay: 200ms;">
+                            <div class="h-64 md:h-80 lg:h-full w-full rounded-lg overflow-hidden shadow-xl">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.991625693759!2d2.292292615674384!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1677353982855!5m2!1sfr!2sfr" 
+                                    width="100%" 
+                                    height="100%" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="bg-theme-primary text-white/60 text-center p-6 text-sm">
+            © 2024 Dr. Elodie Renaud. Tous droits réservés. | <a href="#" class="hover:text-white">Mentions Légales</a>
+        </footer>
+    </div>
+    
+    <!-- JS for scroll animations -->
+    <script>
+        const scrollElements = document.querySelectorAll(".reveal-on-scroll");
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add("is-visible");
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                }
+            });
+        }
+
+        window.addEventListener("scroll", () => {
+            handleScrollAnimation();
+        });
+        
+        // Trigger on initial load as well
+        handleScrollAnimation();
+    </script>
+</body>
+</html>
