@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & Meta Tags -->
-    <title>Dr. Hamidallah Doha - Ophtalmologue & Chirurgie Réfractive à Casablanca</title>
-    <meta name="description" content="Cabinet d'ophtalmologie du Dr. Hamidallah Doha, expert en chirurgie réfractive (LASIK, SMILE, PKR) et soins oculaires modernes à Casablanca. Prenez rendez-vous pour une consultation.">
-    <meta name="author" content="Dr. Hamidallah Doha">
-    <meta name="keywords" content="ophtalmologue casablanca, chirurgie réfractive, lasik, smile, pkr, correction vision, myopie, astigmatisme">
-
+    <title>Dr. Doha Hamidallah - Ophtalmologue & Chirurgie Réfractive au Maroc</title>
+    <meta name="description" content="Cabinet d'ophtalmologie du Dr. Doha Hamidallah, expert en chirurgie réfractive (LASIK, SMILE, PKR) et soins oculaires modernes au Maroc. Prenez rendez-vous pour une consultation.">
+    <meta name="author" content="Dr. Doha Hamidallah">
+    <meta name="keywords" content="ophtalmologue maroc, chirurgie réfractive, lasik, smile, pkr, correction vision, myopie, astigmatisme, casablanca">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.drelodierenaud.fr/"> <!-- Replace with actual URL -->
-    <meta property="og:title" content="Dr. Hamidallah Doha - Ophtalmologue & Chirurgie Réfractive à Paris">
+    <meta property="og:url" content="https://www.drhamidallah.ma/"> <!-- Replace with actual URL -->
+    <meta property="og:title" content="Dr. Doha Hamidallah - Ophtalmologue & Chirurgie Réfractive au Maroc">
     <meta property="og:description" content="Soins oculaires de pointe et chirurgie laser pour une vision parfaite.">
-    <meta property="og:image" content="./assets/doctor-photo.jpg"> <!-- Replace with a representative image -->
+    <meta property="og:image" content="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&q=80"> <!-- Replace with a representative image -->
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.drelodierenaud.fr/"> <!-- Replace with actual URL -->
-    <meta property="twitter:title" content="Dr. Hamidallah Doha - Ophtalmologue & Chirurgie Réfractive à Paris">
+    <meta property="twitter:url" content="https://www.drhamidallah.ma/"> <!-- Replace with actual URL -->
+    <meta property="twitter:title" content="Dr. Doha Hamidallah - Ophtalmologue & Chirurgie Réfractive au Maroc">
     <meta property="twitter:description" content="Soins oculaires de pointe et chirurgie laser pour une vision parfaite.">
-    <meta property="twitter:image" content="./assets/doctor-photo.jpg"> <!-- Replace with a representative image -->
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&q=80"> <!-- Replace with a representative image -->
 
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👁️</text></svg>">
@@ -31,6 +31,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Alpine.js for interactivity -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js"></script>
@@ -70,15 +73,32 @@
         }
     </script>
     
-    <!-- Custom CSS for full-screen sections and animations -->
+    <!-- Custom CSS for animations -->
     <style>
-        html {
-            scroll-snap-type: y mandatory;
+        .hero-bg {
+            background-image: url('./assets/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-        section {
-            scroll-snap-align: start;
-            min-height: 100vh;
+        
+        /* Mobile-specific background adjustments */
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-size: contain;
+                background-position: center top;
+                background-color: #0c4853; /* Fallback color matching theme */
+            }
         }
+        
+        /* For very small screens */
+        @media (max-width: 480px) {
+            .hero-bg {
+                background-size: auto 100%;
+                background-position: center center;
+            }
+        }
+        
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -100,199 +120,154 @@
                     mobileMenuOpen: false, 
                     servicesOpen: false, 
                     chirurgieOpen: false,
-                    activeServiceTab: 'consultation',
-                    activeChirurgieTab: 'smile'
+                    closeAllDropdowns() {
+                        this.servicesOpen = false;
+                        this.chirurgieOpen = false;
+                    }
                 }"
-                :class="{ 'bg-theme-primary/90 backdrop-blur-sm shadow-lg': scrolled, 'bg-transparent': !scrolled }" 
-                class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+                :class="{ 'bg-theme-primary/95 backdrop-blur-md shadow-lg': scrolled, 'bg-theme-primary/80 backdrop-blur-sm': !scrolled }" 
+                class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+                @click.away="closeAllDropdowns()">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#accueil" class="text-2xl font-display font-bold text-white">Dr. Hamidallah Doha </a>
+                <a href="#accueil" class="text-2xl font-display font-bold text-white hover:text-theme-accent transition-colors">
+                    Dr. Doha Hamidallah
+                </a>
                 
                 <!-- Desktop Nav -->
-                <nav class="hidden md:flex items-center space-x-8 text-white font-medium">
-                    <a href="#a-propos" class="hover:text-theme-accent transition-colors">À propos</a>
+                <nav class="hidden lg:flex space-x-1 text-white font-medium">
+                    <a href="#a-propos" class="px-4 py-2 rounded-lg hover:text-theme-accent hover:bg-white/10 transition-all duration-200">À propos</a>
                     
                     <!-- Services Dropdown -->
                     <div class="relative" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
-                        <button class="flex items-center hover:text-theme-accent transition-colors">
-                            Services
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
+                        <button class="px-4 py-2 rounded-lg hover:text-theme-accent hover:bg-white/10 transition-all duration-200 flex items-center">
+                            Nos Services
+                            <i class="fas fa-chevron-down ml-1 transition-transform duration-200" :class="{ 'rotate-180': servicesOpen }"></i>
                         </button>
-                        
-                        <!-- Services Mega Menu -->
-                        <div x-show="servicesOpen"
+                        <div x-show="servicesOpen" 
                              x-transition:enter="transition ease-out duration-200"
                              x-transition:enter-start="opacity-0 transform scale-95"
                              x-transition:enter-end="opacity-100 transform scale-100"
                              x-transition:leave="transition ease-in duration-150"
                              x-transition:leave-start="opacity-100 transform scale-100"
                              x-transition:leave-end="opacity-0 transform scale-95"
-                             class="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl overflow-hidden">
-                            <div class="flex">
-                                <!-- Tabs -->
-                                <div class="w-1/3 bg-theme-primary">
-                                    <button @click="activeServiceTab = 'consultation'" 
-                                            :class="{ 'bg-theme-accent text-white': activeServiceTab === 'consultation', 'text-white/80 hover:bg-white/10': activeServiceTab !== 'consultation' }"
-                                            class="w-full p-3 text-left text-sm font-medium transition-all">Consultation</button>
-                                    <button @click="activeServiceTab = 'diagnostic'" 
-                                            :class="{ 'bg-theme-accent text-white': activeServiceTab === 'diagnostic', 'text-white/80 hover:bg-white/10': activeServiceTab !== 'diagnostic' }"
-                                            class="w-full p-3 text-left text-sm font-medium transition-all">Diagnostic</button>
-                                    <button @click="activeServiceTab = 'traitement'" 
-                                            :class="{ 'bg-theme-accent text-white': activeServiceTab === 'traitement', 'text-white/80 hover:bg-white/10': activeServiceTab !== 'traitement' }"
-                                            class="w-full p-3 text-left text-sm font-medium transition-all">Traitement</button>
-                                    <button @click="activeServiceTab = 'pediatrique'" 
-                                            :class="{ 'bg-theme-accent text-white': activeServiceTab === 'pediatrique', 'text-white/80 hover:bg-white/10': activeServiceTab !== 'pediatrique' }"
-                                            class="w-full p-3 text-left text-sm font-medium transition-all">Pédiatrique</button>
-                                </div>
-                                
-                                <!-- Content -->
-                                <div class="w-2/3 p-4 text-gray-800">
-                                    <div x-show="activeServiceTab === 'consultation'" x-transition.opacity.duration.300ms>
-                                        <h4 class="font-bold text-theme-primary mb-2">Consultation Générale</h4>
-                                        <p class="text-sm text-gray-600 mb-3">Examen complet de la vision et dépistage</p>
-                                        <ul class="text-sm space-y-1">
-                                            <li>• Bilan visuel complet</li>
-                                            <li>• Prescription lunettes/lentilles</li>
-                                            <li>• Contrôle de routine</li>
-                                        </ul>
-                                        <a href="#services" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">Voir plus →</a>
-                                    </div>
-                                    
-                                    <div x-show="activeServiceTab === 'diagnostic'" x-transition.opacity.duration.300ms>
-                                        <h4 class="font-bold text-theme-primary mb-2">Diagnostic Avancé</h4>
-                                        <p class="text-sm text-gray-600 mb-3">Technologies modernes de diagnostic</p>
-                                        <ul class="text-sm space-y-1">
-                                            <li>• OCT rétinien</li>
-                                            <li>• Champ visuel</li>
-                                            <li>• Tonométrie</li>
-                                        </ul>
-                                        <a href="#services" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">Voir plus →</a>
-                                    </div>
-                                    
-                                    <div x-show="activeServiceTab === 'traitement'" x-transition.opacity.duration.300ms>
-                                        <h4 class="font-bold text-theme-primary mb-2">Traitements Spécialisés</h4>
-                                        <p class="text-sm text-gray-600 mb-3">Prise en charge des pathologies</p>
-                                        <ul class="text-sm space-y-1">
-                                            <li>• Glaucome</li>
-                                            <li>• DMLA</li>
-                                            <li>• Cataracte</li>
-                                        </ul>
-                                        <a href="#services" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">Voir plus →</a>
-                                    </div>
-                                    
-                                    <div x-show="activeServiceTab === 'pediatrique'" x-transition.opacity.duration.300ms>
-                                        <h4 class="font-bold text-theme-primary mb-2">Ophtalmologie Pédiatrique</h4>
-                                        <p class="text-sm text-gray-600 mb-3">Soins spécialisés pour enfants</p>
-                                        <ul class="text-sm space-y-1">
-                                            <li>• Dépistage précoce</li>
-                                            <li>• Troubles de la vision</li>
-                                            <li>• Strabisme</li>
-                                        </ul>
-                                        <a href="#services" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">Voir plus →</a>
-                                    </div>
-                                </div>
-                            </div>
+                             class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
+                            <a href="#services" class="block px-4 py-3 text-gray-700 hover:bg-theme-light hover:text-theme-primary transition-colors">
+                                <div class="font-semibold">Bilan Visuel Complet</div>
+                                <div class="text-sm text-gray-500">Examen approfondi et prescription</div>
+                            </a>
+                            <a href="#services" class="block px-4 py-3 text-gray-700 hover:bg-theme-light hover:text-theme-primary transition-colors">
+                                <div class="font-semibold">Chirurgie de la Cataracte</div>
+                                <div class="text-sm text-gray-500">Techniques modernes et récupération rapide</div>
+                            </a>
+                            <a href="#services" class="block px-4 py-3 text-gray-700 hover:bg-theme-light hover:text-theme-primary transition-colors">
+                                <div class="font-semibold">Suivi Glaucome & DMLA</div>
+                                <div class="text-sm text-gray-500">Diagnostic et prise en charge</div>
+                            </a>
+                            <a href="#services" class="block px-4 py-3 text-gray-700 hover:bg-theme-light hover:text-theme-primary transition-colors">
+                                <div class="font-semibold">Ophtalmologie Pédiatrique</div>
+                                <div class="text-sm text-gray-500">Soins spécialisés pour enfants</div>
+                            </a>
                         </div>
                     </div>
                     
-                    <!-- Chirurgie Dropdown -->
+                    <!-- Chirurgie Réfractive Mega Menu -->
                     <div class="relative" @mouseenter="chirurgieOpen = true" @mouseleave="chirurgieOpen = false">
-                        <button class="flex items-center hover:text-theme-accent transition-colors">
-                            Chirurgie
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
+                        <button class="px-4 py-2 rounded-lg hover:text-theme-accent hover:bg-white/10 transition-all duration-200 flex items-center">
+                            Chirurgie Réfractive
+                            <i class="fas fa-chevron-down ml-1 transition-transform duration-200" :class="{ 'rotate-180': chirurgieOpen }"></i>
                         </button>
-                        
-                        <!-- Chirurgie Mega Menu -->
-                        <div x-show="chirurgieOpen"
+                        <!-- Mega Menu -->
+                        <div x-show="chirurgieOpen" 
                              x-transition:enter="transition ease-out duration-200"
                              x-transition:enter-start="opacity-0 transform scale-95"
                              x-transition:enter-end="opacity-100 transform scale-100"
                              x-transition:leave="transition ease-in duration-150"
                              x-transition:leave-start="opacity-100 transform scale-100"
                              x-transition:leave-end="opacity-0 transform scale-95"
-                             class="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl overflow-hidden">
-                            <div class="flex">
-                                <!-- Tabs -->
-                                <div class="w-1/3 bg-theme-primary">
-                                    <button @click="activeChirurgieTab = 'smile'" 
-                                            :class="{ 'bg-theme-accent text-white': activeChirurgieTab === 'smile', 'text-white/80 hover:bg-white/10': activeChirurgieTab !== 'smile' }"
-                                            class="w-full p-3 text-left text-sm font-medium transition-all">SMILE</button>
-                                    <button @click="activeChirurgieTab = 'lasik'" 
-                                            :class="{ 'bg-theme-accent text-white': activeChirurgieTab === 'lasik', 'text-white/80 hover:bg-white/10': activeChirurgieTab !== 'lasik' }"
-                                            class="w-full p-3 text-left text-sm font-medium transition-all">LASIK</button>
-                                    <button @click="activeChirurgieTab = 'pkr'" 
-                                            :class="{ 'bg-theme-accent text-white': activeChirurgieTab === 'pkr', 'text-white/80 hover:bg-white/10': activeChirurgieTab !== 'pkr' }"
-                                            class="w-full p-3 text-left text-sm font-medium transition-all">PKR</button>
-                                    <button @click="activeChirurgieTab = 'cataracte'" 
-                                            :class="{ 'bg-theme-accent text-white': activeChirurgieTab === 'cataracte', 'text-white/80 hover:bg-white/10': activeChirurgieTab !== 'cataracte' }"
-                                            class="w-full p-3 text-left text-sm font-medium transition-all">Cataracte</button>
+                             class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-lg shadow-2xl border border-gray-100 z-50">
+                            
+                            <!-- Mega Menu Header -->
+                            <div class="bg-theme-primary text-white px-6 py-4 rounded-t-lg">
+                                <h3 class="text-lg font-bold font-display">Chirurgie Réfractive Laser</h3>
+                                <p class="text-theme-accent text-sm">Libérez-vous des lunettes et lentilles</p>
+                            </div>
+                            
+                            <!-- Mega Menu Content -->
+                            <div class="grid grid-cols-2 gap-6 p-6">
+                                <!-- Left Column - Main Techniques -->
+                                <div>
+                                    <h4 class="font-bold text-theme-primary mb-3 flex items-center">
+                                        <i class="fas fa-bolt mr-2 text-theme-accent"></i>
+                                        Techniques Laser
+                                    </h4>
+                                    <div class="space-y-3">
+                                        <a href="#chirurgie-refractive" class="block p-3 rounded-lg hover:bg-theme-light transition-colors group">
+                                            <div class="font-semibold text-gray-800 group-hover:text-theme-primary">SMILE</div>
+                                            <div class="text-xs text-gray-500">Mini-invasive • Sans volet</div>
+                                            <div class="text-sm text-gray-600 mt-1">Révolution 100% laser pour myopie et astigmatisme</div>
+                                        </a>
+                                        <a href="#chirurgie-refractive" class="block p-3 rounded-lg hover:bg-theme-light transition-colors group">
+                                            <div class="font-semibold text-gray-800 group-hover:text-theme-primary">LASIK</div>
+                                            <div class="text-xs text-gray-500">Référence mondiale • Récupération rapide</div>
+                                            <div class="text-sm text-gray-600 mt-1">Technique éprouvée pour tous défauts visuels</div>
+                                        </a>
+                                        <a href="#chirurgie-refractive" class="block p-3 rounded-lg hover:bg-theme-light transition-colors group">
+                                            <div class="font-semibold text-gray-800 group-hover:text-theme-primary">PKR/TransPKR</div>
+                                            <div class="text-xs text-gray-500">Surface • Sécurité maximale</div>
+                                            <div class="text-sm text-gray-600 mt-1">Idéal pour cornées fines ou irrégulières</div>
+                                        </a>
+                                    </div>
                                 </div>
                                 
-                                <!-- Content -->
-                                <div class="w-2/3 p-4 text-gray-800">
-                                    <div x-show="activeChirurgieTab === 'smile'" x-transition.opacity.duration.300ms>
-                                        <h4 class="font-bold text-theme-primary mb-2">SMILE</h4>
-                                        <p class="text-sm text-gray-600 mb-3">Technique laser mini-invasive</p>
-                                        <ul class="text-sm space-y-1">
-                                            <li>• Sans volet cornéen</li>
-                                            <li>• Récupération rapide</li>
-                                            <li>• Idéal pour sportifs</li>
-                                        </ul>
-                                        <a href="#chirurgie-refractive" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">En savoir plus →</a>
-                                    </div>
-                                    
-                                    <div x-show="activeChirurgieTab === 'lasik'" x-transition.opacity.duration.300ms>
-                                        <h4 class="font-bold text-theme-primary mb-2">LASIK</h4>
-                                        <p class="text-sm text-gray-600 mb-3">Référence mondiale en chirurgie réfractive</p>
-                                        <ul class="text-sm space-y-1">
-                                            <li>• Technique éprouvée</li>
-                                            <li>• Vision immédiate</li>
-                                            <li>• Très haute précision</li>
-                                        </ul>
-                                        <a href="#chirurgie-refractive" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">En savoir plus →</a>
-                                    </div>
-                                    
-                                    <div x-show="activeChirurgieTab === 'pkr'" x-transition.opacity.duration.300ms>
-                                        <h4 class="font-bold text-theme-primary mb-2">PKR</h4>
-                                        <p class="text-sm text-gray-600 mb-3">Sécurité maximale</p>
-                                        <ul class="text-sm space-y-1">
-                                            <li>• Cornées fines</li>
-                                            <li>• Aucun risque de volet</li>
-                                            <li>• Résultats durables</li>
-                                        </ul>
-                                        <a href="#chirurgie-refractive" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">En savoir plus →</a>
-                                    </div>
-                                    
-                                    <div x-show="activeChirurgieTab === 'cataracte'" x-transition.opacity.duration.300ms>
-                                        <h4 class="font-bold text-theme-primary mb-2">Chirurgie de la Cataracte</h4>
-                                        <p class="text-sm text-gray-600 mb-3">Techniques modernes</p>
-                                        <ul class="text-sm space-y-1">
-                                            <li>• Phacoémulsification</li>
-                                            <li>• Implants premium</li>
-                                            <li>• Vision claire</li>
-                                        </ul>
-                                        <a href="#chirurgie-refractive" class="inline-block mt-3 text-theme-primary text-sm font-medium hover:text-theme-accent">En savoir plus →</a>
+                                <!-- Right Column - Alternative Options -->
+                                <div>
+                                    <h4 class="font-bold text-theme-primary mb-3 flex items-center">
+                                        <i class="fas fa-eye mr-2 text-theme-accent"></i>
+                                        Alternatives
+                                    </h4>
+                                    <div class="space-y-3">
+                                        <a href="#chirurgie-refractive" class="block p-3 rounded-lg hover:bg-theme-light transition-colors group">
+                                            <div class="font-semibold text-gray-800 group-hover:text-theme-primary">Implants ICL</div>
+                                            <div class="text-xs text-gray-500">Réversible • Fortes amétropies</div>
+                                            <div class="text-sm text-gray-600 mt-1">Solution pour les cas non éligibles au laser</div>
+                                        </a>
+                                        <a href="#chirurgie-refractive" class="block p-3 rounded-lg hover:bg-theme-light transition-colors group">
+                                            <div class="font-semibold text-gray-800 group-hover:text-theme-primary">Presbylasik</div>
+                                            <div class="text-xs text-gray-500">Vision de près • Après 40 ans</div>
+                                            <div class="text-sm text-gray-600 mt-1">Correction simultanée de la presbytie</div>
+                                        </a>
+                                        <div class="bg-theme-accent/10 p-3 rounded-lg">
+                                            <div class="text-xs text-theme-primary font-semibold uppercase tracking-wide mb-1">Consultation</div>
+                                            <div class="text-sm text-gray-700">Bilan pré-opératoire complet pour déterminer la meilleure technique</div>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            
+                            <!-- Mega Menu Footer -->
+                            <div class="bg-gray-50 px-6 py-4 rounded-b-lg flex justify-between items-center">
+                                <div class="text-sm text-gray-600">
+                                    <span class="font-semibold text-theme-primary">+1500</span> interventions réalisées
+                                </div>
+                                <a href="#contact" class="bg-theme-accent hover:bg-theme-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                    Consultation gratuite
+                                </a>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="#blog" class="hover:text-theme-accent transition-colors">Blog</a>
-                    <a href="#contact" class="hover:text-theme-accent transition-colors">Contact</a>
+                    <a href="#blog" class="px-4 py-2 rounded-lg hover:text-theme-accent hover:bg-white/10 transition-all duration-200">Blog</a>
+                    <a href="#articles" class="px-4 py-2 rounded-lg hover:text-theme-accent hover:bg-white/10 transition-all duration-200">Articles</a>
+                    <a href="#contact" class="bg-theme-accent hover:bg-white hover:text-theme-primary px-6 py-2 rounded-full font-semibold transition-all duration-300">Contact</a>
                 </nav>
 
                 <!-- Mobile Menu Button -->
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white z-50">
-                    <svg x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                    <svg x-show="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-white z-50 p-2">
+                    <i x-show="!mobileMenuOpen" class="fas fa-bars w-6 h-6"></i>
+                    <i x-show="mobileMenuOpen" class="fas fa-times w-6 h-6"></i>
                 </button>
 
-                <!-- Mobile Menu -->
+                <!-- Enhanced Mobile Menu -->
                 <div x-show="mobileMenuOpen" 
                      x-transition:enter="transition ease-out duration-300"
                      x-transition:enter-start="opacity-0 transform -translate-y-4"
@@ -300,31 +275,75 @@
                      x-transition:leave="transition ease-in duration-200"
                      x-transition:leave-start="opacity-100 transform translate-y-0"
                      x-transition:leave-end="opacity-0 transform -translate-y-4"
-                     class="md:hidden absolute top-0 left-0 w-full h-screen bg-theme-primary flex flex-col items-center justify-center space-y-8 text-2xl text-white font-display"
+                     class="lg:hidden absolute top-0 left-0 w-full h-screen bg-theme-primary overflow-y-auto"
                      @click.away="mobileMenuOpen = false">
-                    <a @click="mobileMenuOpen = false" href="#a-propos" class="hover:text-theme-accent">À propos</a>
-                    <a @click="mobileMenuOpen = false" href="#services" class="hover:text-theme-accent">Services</a>
-                    <a @click="mobileMenuOpen = false" href="#chirurgie-refractive" class="hover:text-theme-accent">Chirurgie</a>
-                    <a @click="mobileMenuOpen = false" href="#blog" class="hover:text-theme-accent">Blog</a>
-                    <a @click="mobileMenuOpen = false" href="#contact" class="bg-theme-accent/80 text-white px-6 py-3 rounded-full">Contact</a>
+                    
+                    <!-- Mobile Menu Header -->
+                    <div class="pt-20 pb-6 px-6 border-b border-white/20">
+                        <h2 class="text-xl font-display font-bold text-white">Menu Navigation</h2>
+                    </div>
+                    
+                    <!-- Mobile Menu Content -->
+                    <div class="px-6 py-4 space-y-2">
+                        <a @click="mobileMenuOpen = false" href="#a-propos" class="block py-3 text-white text-lg hover:text-theme-accent transition-colors">À propos</a>
+                        
+                        <!-- Mobile Services Section -->
+                        <div x-data="{ mobileServicesOpen: false }" class="border-b border-white/10 pb-2">
+                            <button @click="mobileServicesOpen = !mobileServicesOpen" class="w-full text-left py-3 text-white text-lg hover:text-theme-accent transition-colors flex justify-between items-center">
+                                Nos Services
+                                <i class="fas fa-chevron-down transition-transform duration-200" :class="{ 'rotate-180': mobileServicesOpen }"></i>
+                            </button>
+                            <div x-show="mobileServicesOpen" x-transition class="pl-4 space-y-2">
+                                <a @click="mobileMenuOpen = false" href="#services" class="block py-2 text-white/80 hover:text-theme-accent">Bilan Visuel Complet</a>
+                                <a @click="mobileMenuOpen = false" href="#services" class="block py-2 text-white/80 hover:text-theme-accent">Chirurgie de la Cataracte</a>
+                                <a @click="mobileMenuOpen = false" href="#services" class="block py-2 text-white/80 hover:text-theme-accent">Suivi Glaucome & DMLA</a>
+                                <a @click="mobileMenuOpen = false" href="#services" class="block py-2 text-white/80 hover:text-theme-accent">Ophtalmologie Pédiatrique</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Chirurgie Section -->
+                        <div x-data="{ mobileChirurgieOpen: false }" class="border-b border-white/10 pb-2">
+                            <button @click="mobileChirurgieOpen = !mobileChirurgieOpen" class="w-full text-left py-3 text-white text-lg hover:text-theme-accent transition-colors flex justify-between items-center">
+                                Chirurgie Réfractive
+                                <i class="fas fa-chevron-down transition-transform duration-200" :class="{ 'rotate-180': mobileChirurgieOpen }"></i>
+                            </button>
+                            <div x-show="mobileChirurgieOpen" x-transition class="pl-4 space-y-3">
+                                <div>
+                                    <div class="text-theme-accent font-semibold text-sm mb-2">Techniques Laser</div>
+                                    <a @click="mobileMenuOpen = false" href="#chirurgie-refractive" class="block py-2 text-white/80 hover:text-theme-accent">SMILE</a>
+                                    <a @click="mobileMenuOpen = false" href="#chirurgie-refractive" class="block py-2 text-white/80 hover:text-theme-accent">LASIK</a>
+                                    <a @click="mobileMenuOpen = false" href="#chirurgie-refractive" class="block py-2 text-white/80 hover:text-theme-accent">PKR/TransPKR</a>
+                                </div>
+                                <div>
+                                    <div class="text-theme-accent font-semibold text-sm mb-2">Alternatives</div>
+                                    <a @click="mobileMenuOpen = false" href="#chirurgie-refractive" class="block py-2 text-white/80 hover:text-theme-accent">Implants ICL</a>
+                                    <a @click="mobileMenuOpen = false" href="#chirurgie-refractive" class="block py-2 text-white/80 hover:text-theme-accent">Presbylasik</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a @click="mobileMenuOpen = false" href="#blog" class="block py-3 text-white text-lg hover:text-theme-accent transition-colors">Blog</a>
+                        <a @click="mobileMenuOpen = false" href="#articles" class="block py-3 text-white text-lg hover:text-theme-accent transition-colors">Articles</a>
+                        <a @click="mobileMenuOpen = false" href="#contact" class="block mt-6 bg-theme-accent text-theme-primary text-center font-bold py-4 px-6 rounded-full text-lg">Contact</a>
+                    </div>
                 </div>
             </div>
         </header>
 
         <main>
             <!-- 1. Hero Section -->
-            <section id="accueil" class="relative flex items-center justify-center text-center text-white overflow-hidden">
-                <div class="absolute inset-0 bg-black animate-slow-zoom" style="background-image: url('./assets/hero.jpg'); background-size: cover; background-position: center;"></div>
-                <div class="absolute inset-0 bg-theme-primary opacity-70"></div>
+            <section id="accueil" class="relative flex items-center justify-center text-center text-white overflow-hidden py-32 md:py-40">
+                <div class="absolute inset-0 bg-black animate-slow-zoom hero-bg"></div>
+                <div class="absolute inset-0 bg-theme-primary opacity-30"></div>
                 <div class="relative z-10 p-6" style="animation: fade-in-up 1.2s ease-out;">
-                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-display leading-tight mb-4">Lorem ipsum dolor sit amet consectetur adipiscing elit.</h1>
-                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-display leading-tight mb-4">Une vision parfaite à chaque étape de votre vie.</h1>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">Soins ophtalmologiques et chirurgie réfractive de pointe au Maroc.</p>
                     <a href="#contact" class="bg-theme-accent hover:bg-white hover:text-theme-primary text-theme-primary font-bold font-display py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
                         Prendre rendez-vous
                     </a>
                 </div>
                 <a href="#a-propos" class="absolute bottom-10 animate-bounce-slow">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M19 9l-7 7-7-7"></path></svg>
+                    <i class="fas fa-chevron-down text-white text-2xl"></i>
                 </a>
             </section>
 
@@ -332,25 +351,41 @@
             <section id="a-propos" class="flex items-center justify-center bg-theme-light py-20 px-6">
                 <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
                     <div class="reveal-on-scroll">
-                        <img src="./assets/doctor-photo.jpg" alt="Dr. Hamidallah Doha" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                        <img src="./assets/doctor-photo.jpg" alt="Dr. Doha Hamidallah" class="rounded-lg shadow-2xl w-full h-auto object-cover">
                     </div>
                     <div class="reveal-on-scroll" style="transition-delay: 200ms;">
-                        <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary mb-4">Lorem Ipsum</h2>
-                        <h3 class="text-xl font-display text-gray-600 mb-6">Consectetur adipiscing elit sed do eiusmod.</h3>
-                        <p class="mb-6 text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary mb-4">Dr. Doha Hamidallah</h2>
+                        <h3 class="text-xl font-display text-gray-600 mb-6">Ophtalmologue – Spécialiste de la santé visuelle</h3>
+                        <p class="mb-4 text-gray-700">Je suis le Dr Doha Hamidallah, ophtalmologue passionnée par la santé des yeux et engagée dans une démarche d'excellence médicale. Diplômée de la Faculté de médecine de Casablanca, j'ai poursuivi une formation approfondie en ophtalmologie dans plusieurs établissements de référence en France.</p>
+                        
+                        <p class="mb-6 text-gray-700">Je crois fermement en une ophtalmologie humaine, préventive et pédagogique. C'est pourquoi j'accorde une grande importance à l'éducation et à la prévention, aussi bien en consultation qu'à travers mes actions de sensibilisation sur les réseaux sociaux.</p>
+                        
                         <div class="space-y-4">
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 text-theme-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span class="font-semibold text-gray-800">Lorem ipsum dolor sit amet consectetur</span>
+                            <div class="flex items-start">
+                                <i class="fas fa-hospital text-theme-primary mr-3 mt-0.5 flex-shrink-0 text-xl"></i>
+                                <div>
+                                    <span class="font-semibold text-gray-800">Formation internationale d'excellence</span>
+                                    <p class="text-sm text-gray-600 mt-1">Hôpital de Villeneuve-Saint-Georges, Hôpital des Quinze-Vingts à Paris, Fondation Rothschild</p>
+                                </div>
                             </div>
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 text-theme-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18a7.5 7.5 0 000-15 7.5 7.5 0 000 15z"></path></svg>
-                                <span class="font-semibold text-gray-800">Adipiscing elit sed do eiusmod tempor incididunt</span>
+                            <div class="flex items-start">
+                                <i class="fas fa-graduation-cap text-theme-primary mr-3 mt-0.5 flex-shrink-0 text-xl"></i>
+                                <div>
+                                    <span class="font-semibold text-gray-800">Diplômée de la Faculté de médecine de Casablanca</span>
+                                    <p class="text-sm text-gray-600 mt-1">Expertise au service des patients marocains</p>
+                                </div>
                             </div>
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 text-theme-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
-                                <span class="font-semibold text-gray-800">Ut labore et dolore magna aliqua enim ad minim</span>
+                            <div class="flex items-start">
+                                <i class="fas fa-heart text-theme-primary mr-3 mt-0.5 flex-shrink-0 text-xl"></i>
+                                <div>
+                                    <span class="font-semibold text-gray-800">Approche humaine et préventive</span>
+                                    <p class="text-sm text-gray-600 mt-1">Éducation, prévention et sensibilisation pour préserver votre vision</p>
+                                </div>
                             </div>
+                        </div>
+                        
+                        <div class="mt-8 p-4 bg-theme-primary/5 rounded-lg border-l-4 border-theme-primary">
+                            <p class="text-sm text-gray-700 italic">"Je vous invite à découvrir l'ensemble des services personnalisés que je propose, avec pour objectif commun : prendre soin de votre vision, aujourd'hui et pour demain."</p>
                         </div>
                     </div>
                 </div>
@@ -359,124 +394,425 @@
             <!-- 3. Nos services -->
             <section id="services" class="flex items-center justify-center bg-theme-primary text-white py-20 px-6">
                 <div class="container mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-12 reveal-on-scroll">Lorem Ipsum Dolor Sit Amet</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-12 reveal-on-scroll">Nos Services Ophtalmologiques</h2>
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <!-- Card 1 -->
                         <div class="bg-white/10 p-8 rounded-lg transform hover:-translate-y-2 transition-transform duration-300 reveal-on-scroll">
-                           <h3 class="text-xl font-bold font-display mb-2">Consectetur Adipiscing</h3>
-                           <p class="text-white/80">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                           <h3 class="text-xl font-bold font-display mb-2">Bilan Visuel Complet</h3>
+                           <p class="text-white/80">Examen approfondi pour adultes et enfants, prescription de lunettes et lentilles.</p>
                         </div>
                         <!-- Card 2 -->
                         <div class="bg-white/10 p-8 rounded-lg transform hover:-translate-y-2 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 150ms;">
-                           <h3 class="text-xl font-bold font-display mb-2">Eiusmod Tempor</h3>
-                           <p class="text-white/80">Ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation.</p>
+                           <h3 class="text-xl font-bold font-display mb-2">Chirurgie de la Cataracte</h3>
+                           <p class="text-white/80">Techniques modernes pour une récupération rapide et une vision claire.</p>
                         </div>
                         <!-- Card 3 -->
                         <div class="bg-white/10 p-8 rounded-lg transform hover:-translate-y-2 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 300ms;">
-                           <h3 class="text-xl font-bold font-display mb-2">Ullamco Laboris</h3>
-                           <p class="text-white/80">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+                           <h3 class="text-xl font-bold font-display mb-2">Suivi du Glaucome et DMLA</h3>
+                           <p class="text-white/80">Diagnostic précoce et prise en charge des pathologies rétiniennes.</p>
                         </div>
                         <!-- Card 4 -->
                         <div class="bg-white/10 p-8 rounded-lg transform hover:-translate-y-2 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 450ms;">
-                           <h3 class="text-xl font-bold font-display mb-2">Excepteur Sint</h3>
-                           <p class="text-white/80">Occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit.</p>
+                           <h3 class="text-xl font-bold font-display mb-2">Ophtalmologie Pédiatrique</h3>
+                           <p class="text-white/80">Dépistage et traitement des troubles visuels chez l'enfant.</p>
                         </div>
                     </div>
                 </div>
             </section>
             
             <!-- 4. Chirurgie Réfractive -->
-            <section id="chirurgie-refractive" class="flex items-center justify-center bg-theme-light py-20 px-6" x-data="{ activeTab: 'smile' }">
+            <section id="chirurgie-refractive" class="flex items-center justify-center bg-theme-light py-20 px-6" x-data="{ activeTab: 'avantages' }">
                 <div class="container mx-auto">
                     <div class="text-center mb-12">
-                         <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary reveal-on-scroll">Lorem Ipsum Dolor Sit Amet</h2>
-                         <p class="text-lg text-gray-600 mt-2 reveal-on-scroll">Consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</p>
+                         <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary reveal-on-scroll">Chirurgie Réfractive</h2>
+                         <p class="text-lg text-gray-600 mt-2 reveal-on-scroll">Avantages de la correction de la vision</p>
                     </div>
-                    <div class="flex flex-col md:flex-row gap-8 lg:gap-12 reveal-on-scroll">
-                        <!-- Tabs -->
-                        <div class="flex md:flex-col md:w-1/4">
-                             <button @click="activeTab = 'smile'" :class="{ 'bg-theme-primary text-white': activeTab === 'smile', 'text-gray-600 hover:bg-white': activeTab !== 'smile' }" class="text-left w-full p-4 font-bold font-display rounded-t-lg md:rounded-l-lg md:rounded-tr-none transition-all">SMILE</button>
-                             <button @click="activeTab = 'lasik'" :class="{ 'bg-theme-primary text-white': activeTab === 'lasik', 'text-gray-600 hover:bg-white': activeTab !== 'lasik' }" class="text-left w-full p-4 font-bold font-display transition-all">LASIK</button>
-                             <button @click="activeTab = 'pkr'" :class="{ 'bg-theme-primary text-white': activeTab === 'pkr', 'text-gray-600 hover:bg-white': activeTab !== 'pkr' }" class="text-left w-full p-4 font-bold font-display transition-all">PKR</button>
-                             <button @click="activeTab = 'autres'" :class="{ 'bg-theme-primary text-white': activeTab === 'autres', 'text-gray-600 hover:bg-white': activeTab !== 'autres' }" class="text-left w-full p-4 font-bold font-display rounded-b-lg md:rounded-bl-none md:rounded-l-lg transition-all">Autres Options</button>
-                        </div>
-                        <!-- Content -->
-                        <div class="md:w-3/4 bg-white p-8 rounded-b-lg md:rounded-r-lg shadow-lg min-h-[300px]">
-                            <div x-show="activeTab === 'smile'" x-transition.opacity.duration.500ms>
-                                <h3 class="text-2xl font-bold text-theme-primary mb-3">Lorem : Ipsum Dolor Sit</h3>
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                    <li>Duis aute irure dolor in reprehenderit</li>
-                                    <li>Voluptate velit esse cillum dolore</li>
-                                    <li>Excepteur sint occaecat cupidatat</li>
-                                </ul>
-                            </div>
-                            <div x-show="activeTab === 'lasik'" x-transition.opacity.duration.500ms>
-                                <h3 class="text-2xl font-bold text-theme-primary mb-3">Adipiscing : Elit Sed Do</h3>
-                                <p class="mb-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.</p>
-                                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                    <li>At vero eos et accusamus et iusto</li>
-                                    <li>Odio dignissimos ducimus qui blanditiis</li>
-                                    <li>Praesentium voluptatum deleniti atque</li>
-                                </ul>
-                            </div>
-                            <div x-show="activeTab === 'pkr'" x-transition.opacity.duration.500ms>
-                                <h3 class="text-2xl font-bold text-theme-primary mb-3">Tempor : Incididunt Ut Labore</h3>
-                                <p class="mb-4">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
-                                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                    <li>Omnis voluptas assumenda est dolor</li>
-                                    <li>Repellendus temporibus autem quibusdam</li>
-                                    <li>Aut officiis debitis aut rerum necessitatibus</li>
-                                </ul>
-                            </div>
-                            <div x-show="activeTab === 'autres'" x-transition.opacity.duration.500ms>
-                                <h3 class="text-2xl font-bold text-theme-primary mb-3">Magna Aliqua et Consectetur</h3>
-                                <p class="mb-4">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                    <li>Ut enim ad minima veniam quis nostrum</li>
-                                    <li>Exercitationem ullam corporis suscipit</li>
-                                    <li>Laboriosam nisi ut aliquid ex ea commodi</li>
-                                </ul>
+                    
+                    <!-- Introduction Section -->
+                    <div class="mb-16 max-w-4xl mx-auto text-center reveal-on-scroll">
+                        <div class="bg-white p-8 rounded-xl shadow-lg">
+                            <h3 class="text-2xl font-bold text-theme-primary mb-4">Quels sont les avantages de la correction de la vision au laser ?</h3>
+                            <p class="text-gray-700 mb-6">La correction de la vision au laser est un choix de style de vie moderne et électif qui offre de nombreux avantages, permettant à ceux qui y investissent de voir plus clairement.</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-6 text-left">
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <svg class="w-5 h-5 text-theme-accent mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        <span class="text-gray-700">La liberté de ne plus avoir besoin de lunettes ou de lentilles pour conduire</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check text-theme-accent mr-3 mt-0.5 flex-shrink-0"></i>
+                                        <span class="text-gray-700">La liberté de faire du sport, nager, sortir sans contraintes visuelles</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <svg class="w-5 h-5 text-theme-accent mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        <span class="text-gray-700">La fin de l'oubli de vos lunettes – à jamais !</span>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <svg class="w-5 h-5 text-theme-accent mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        <span class="text-gray-700">Terminé les lentilles inconfortables et les irritations</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <svg class="w-5 h-5 text-theme-accent mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        <span class="text-gray-700">La liberté et la confiance d'une apparence sans lunettes</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <svg class="w-5 h-5 text-theme-accent mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        <span class="text-gray-700">La fin des dépenses liées aux lunettes et lentilles</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                    
+                    <div class="reveal-on-scroll">
+                        <!-- Mobile: Vertical Stack, Desktop: Horizontal Layout -->
+                        <div class="flex flex-col lg:flex-row gap-6 lg:gap-12">
+                            <!-- Tabs - Mobile: Horizontal Scroll, Desktop: Vertical -->
+                            <div class="lg:w-1/4">
+                                <!-- Mobile: Horizontal Scrollable Tabs -->
+                                <div class="flex lg:hidden overflow-x-auto pb-2 mb-4 space-x-2">
+                                     <button @click="activeTab = 'avantages'" :class="{ 'bg-theme-primary text-white': activeTab === 'avantages', 'bg-gray-100 text-gray-600': activeTab !== 'avantages' }" class="whitespace-nowrap px-4 py-3 font-bold font-display rounded-lg transition-all flex-shrink-0 text-sm">Avantages</button>
+                                     <button @click="activeTab = 'smile'" :class="{ 'bg-theme-primary text-white': activeTab === 'smile', 'bg-gray-100 text-gray-600': activeTab !== 'smile' }" class="whitespace-nowrap px-4 py-3 font-bold font-display rounded-lg transition-all flex-shrink-0 text-sm">SMILE</button>
+                                     <button @click="activeTab = 'lasik'" :class="{ 'bg-theme-primary text-white': activeTab === 'lasik', 'bg-gray-100 text-gray-600': activeTab !== 'lasik' }" class="whitespace-nowrap px-4 py-3 font-bold font-display rounded-lg transition-all flex-shrink-0 text-sm">LASIK</button>
+                                     <button @click="activeTab = 'pkr'" :class="{ 'bg-theme-primary text-white': activeTab === 'pkr', 'bg-gray-100 text-gray-600': activeTab !== 'pkr' }" class="whitespace-nowrap px-4 py-3 font-bold font-display rounded-lg transition-all flex-shrink-0 text-sm">PKR</button>
+                                     <button @click="activeTab = 'processus'" :class="{ 'bg-theme-primary text-white': activeTab === 'processus', 'bg-gray-100 text-gray-600': activeTab !== 'processus' }" class="whitespace-nowrap px-4 py-3 font-bold font-display rounded-lg transition-all flex-shrink-0 text-sm">Processus</button>
+                                </div>
+                                
+                                <!-- Desktop: Vertical Tabs -->
+                                <div class="hidden lg:flex lg:flex-col">
+                                     <button @click="activeTab = 'avantages'" :class="{ 'bg-theme-primary text-white': activeTab === 'avantages', 'text-gray-600 hover:bg-white': activeTab !== 'avantages' }" class="text-left w-full p-4 font-bold font-display rounded-t-lg lg:rounded-l-lg lg:rounded-tr-none transition-all">Avantages</button>
+                                     <button @click="activeTab = 'smile'" :class="{ 'bg-theme-primary text-white': activeTab === 'smile', 'text-gray-600 hover:bg-white': activeTab !== 'smile' }" class="text-left w-full p-4 font-bold font-display transition-all">SMILE</button>
+                                     <button @click="activeTab = 'lasik'" :class="{ 'bg-theme-primary text-white': activeTab === 'lasik', 'text-gray-600 hover:bg-white': activeTab !== 'lasik' }" class="text-left w-full p-4 font-bold font-display transition-all">LASIK</button>
+                                     <button @click="activeTab = 'pkr'" :class="{ 'bg-theme-primary text-white': activeTab === 'pkr', 'text-gray-600 hover:bg-white': activeTab !== 'pkr' }" class="text-left w-full p-4 font-bold font-display transition-all">PKR</button>
+                                     <button @click="activeTab = 'processus'" :class="{ 'bg-theme-primary text-white': activeTab === 'processus', 'text-gray-600 hover:bg-white': activeTab !== 'processus' }" class="text-left w-full p-4 font-bold font-display rounded-b-lg lg:rounded-bl-none lg:rounded-l-lg transition-all">Processus</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Content -->
+                            <div class="lg:w-3/4 bg-white p-4 sm:p-6 lg:p-8 rounded-lg lg:rounded-r-lg shadow-lg min-h-[300px] overflow-hidden">
+                                <!-- Avantages Content -->
+                                <div x-show="activeTab === 'avantages'" x-transition.opacity.duration.500ms>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-theme-primary mb-4">Pourquoi choisir la chirurgie réfractive ?</h3>
+                                    <p class="mb-6 text-gray-700 text-sm sm:text-base">Tout le monde n'est pas un bon candidat, mais avec les progrès technologiques actuels, cette option est accessible à un plus grand nombre de personnes que jamais auparavant.</p>
+                                    
+                                    <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                                        <div class="space-y-4">
+                                            <h4 class="font-semibold text-theme-primary text-sm sm:text-base">Liberté quotidienne</h4>
+                                            <ul class="space-y-2 text-gray-700 text-sm sm:text-base">
+                                                <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Conduite sans contraintes</li>
+                                                <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Sport et activités physiques</li>
+                                                <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Voyages simplifiés</li>
+                                            </ul>
+                                        </div>
+                                        <div class="space-y-4">
+                                            <h4 class="font-semibold text-theme-primary text-sm sm:text-base">Avantages économiques</h4>
+                                            <ul class="space-y-2 text-gray-700 text-sm sm:text-base">
+                                                <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Fin des achats de lunettes</li>
+                                                <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Plus de lentilles à racheter</li>
+                                                <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Investissement à long terme</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- SMILE Content -->
+                                <div x-show="activeTab === 'smile'" x-transition.opacity.duration.500ms>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-theme-primary mb-3">SMILE® - La dernière technologie disponible</h3>
+                                    <p class="mb-6 text-gray-700 text-sm sm:text-base">La chirurgie de l'œil au laser SMILE® est peu invasive, rapide, indolore, et grâce à un rétablissement chirurgical et une guérison rapides, SMILE® vous offre des résultats optimaux en un temps record.</p>
+                                    
+                                    <h4 class="font-bold text-theme-primary mb-3 text-sm sm:text-base">Les avantages de la chirurgie au laser SMILE® :</h4>
+                                    <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                                        <ul class="space-y-2 text-gray-700 text-sm sm:text-base">
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Traitement peu invasif et délicat</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Sans volet ("flapless")</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Pas de bruit ni d'odeur</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Risque réduit de sécheresse oculaire</li>
+                                        </ul>
+                                        <ul class="space-y-2 text-gray-700 text-sm sm:text-base">
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Procédure indolore</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Durée rapide : 25-30 secondes/œil</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Récupération visuelle rapide</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Retour au travail en 24-48h</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-theme-accent/10 p-4 rounded-lg">
+                                        <p class="text-sm text-gray-700"><strong>À savoir :</strong> La plupart des patients peuvent voir clairement et conduire dès le lendemain de l'intervention.</p>
+                                    </div>
+                                </div>
+                            
+                                <!-- LASIK Content -->
+                                <div x-show="activeTab === 'lasik'" x-transition.opacity.duration.500ms>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-theme-primary mb-3">LASIK - La référence mondiale</h3>
+                                    <p class="mb-6 text-gray-700 text-sm sm:text-base">LASIK est la procédure de correction de la vision au laser la plus éprouvée et la plus pratiquée au monde. Elle peut traiter la myopie, l'hypermétropie, l'astigmatisme et parfois la presbytie.</p>
+                                    
+                                    <h4 class="font-bold text-theme-primary mb-3 text-sm sm:text-base">Avantages du traitement LASIK :</h4>
+                                    <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                                        <ul class="space-y-2 text-gray-700 text-sm sm:text-base">
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Procédure courante et sûre</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Correction durable de la vision</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Chirurgie de jour</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Procédure rapide</li>
+                                        </ul>
+                                        <ul class="space-y-2 text-gray-700 text-sm sm:text-base">
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Vision s'améliore en 24h</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Retour aux activités rapide</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Large éventail de prescriptions</li>
+                                            <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Performance visuelle améliorée</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-theme-primary/5 p-4 rounded-lg border-l-4 border-theme-primary">
+                                        <h5 class="font-semibold text-theme-primary mb-2 text-sm sm:text-base">Pourquoi choisir le LASIK ?</h5>
+                                        <p class="text-sm text-gray-700">De nombreuses personnes choisissent la chirurgie LASIK pour sa commodité, sa précision clinique et son potentiel à réduire la dépendance aux lunettes et lentilles de contact.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- PKR Content -->
+                                <div x-show="activeTab === 'pkr'" x-transition.opacity.duration.500ms>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-theme-primary mb-3">PKR - La sécurité avant tout</h3>
+                                    <p class="mb-6 text-gray-700 text-sm sm:text-base">La chirurgie oculaire PRK a été la première forme de correction de la vision au laser et reste encore aujourd'hui une option importante, notamment pour les patients qui ne sont pas éligibles à d'autres procédures.</p>
+                                    
+                                    <div class="mb-6">
+                                        <p class="text-gray-700 mb-4 text-sm sm:text-base">La PRK nécessite le traitement d'une plus petite quantité de tissu cornéen comparé aux autres techniques, ce qui la rend idéale pour les yeux ayant une cornée fine. Comme on pratique la PRK transépithéliale, aucun instrument ne touche l'œil.</p>
+                                    </div>
+                                    
+                                    <h4 class="font-bold text-theme-primary mb-3 text-sm sm:text-base">Avantages de la chirurgie oculaire PKR :</h4>
+                                    <ul class="space-y-3 text-gray-700 mb-6 text-sm sm:text-base">
+                                        <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Technologie éprouvée et fiable</li>
+                                        <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Traitement sans création de volet</li>
+                                        <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Aucun contact manuel sur la cornée</li>
+                                        <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Convient aux cornées fines ou irrégulières</li>
+                                        <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Possible avec légers symptômes de sécheresse</li>
+                                        <li class="flex items-start"><span class="w-2 h-2 bg-theme-accent rounded-full mr-3 mt-2 flex-shrink-0"></span>Résultats visuels excellents</li>
+                                    </ul>
+                                    
+                                    <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                                        <p class="text-sm text-gray-700"><strong>Important :</strong> La PRK implique un temps de récupération plus long et nécessite une gestion postopératoire rigoureuse. Une lentille de contact protectrice est posée pendant les quatre premiers jours.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Processus Content -->
+                                <div x-show="activeTab === 'processus'" x-transition.opacity.duration.500ms>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-theme-primary mb-4">Quelles sont les étapes ?</h3>
+                                    <p class="mb-6 text-gray-700 text-sm sm:text-base">Il est tout à fait normal de se sentir un peu nerveux à l'idée de subir une intervention chirurgicale. Le Dr Hamidallah en est consciente et prend le temps de s'assurer que vous puissiez poser toutes vos questions.</p>
+                                    
+                                    <div class="space-y-6">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 w-8 h-8 bg-theme-primary text-white rounded-full flex items-center justify-center font-bold text-sm mr-4">1</div>
+                                            <div>
+                                                <h4 class="font-bold text-theme-primary mb-2 text-sm sm:text-base">Consultation préopératoire</h4>
+                                                <p class="text-gray-700 text-sm sm:text-base">Déterminer si vous êtes un bon candidat et quel type de technologie offrira les meilleurs résultats pour vos yeux. Tous les examens nécessaires sont réalisés sur place.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 w-8 h-8 bg-theme-primary text-white rounded-full flex items-center justify-center font-bold text-sm mr-4">2</div>
+                                            <div>
+                                                <h4 class="font-bold text-theme-primary mb-2 text-sm sm:text-base">Jour de l'intervention</h4>
+                                                <p class="text-gray-700 text-sm sm:text-base">Portez des vêtements confortables, pas de maquillage. Vous restez environ 2 heures au centre. La procédure est très rapide avec un inconfort léger mais aucune douleur.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 w-8 h-8 bg-theme-primary text-white rounded-full flex items-center justify-center font-bold text-sm mr-4">3</div>
+                                            <div>
+                                                <h4 class="font-bold text-theme-primary mb-2 text-sm sm:text-base">Rendez-vous postopératoire</h4>
+                                                <p class="text-gray-700 text-sm sm:text-base">Le lendemain de l'intervention, vous verrez le Dr Hamidallah pour un rendez-vous de suivi. Elle vérifiera l'état de vos yeux et répondra à toutes vos questions.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 w-8 h-8 bg-theme-accent text-white rounded-full flex items-center justify-center font-bold text-sm mr-4">4</div>
+                                            <div>
+                                                <h4 class="font-bold text-theme-primary mb-2 text-sm sm:text-base">Récupération</h4>
+                                                <p class="text-gray-700 text-sm sm:text-base">La récupération varie d'un patient à l'autre en fonction du type de correction au laser réalisé et des particularités de l'œil. Il est conseillé de reposer vos yeux les 24 premières heures.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             
             <!-- 5. Blog -->
             <section id="blog" class="flex items-center justify-center bg-theme-primary text-white py-20 px-6">
                  <div class="container mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold font-display text-center mb-12 reveal-on-scroll">Lorem Ipsum Dolor Sit Amet</h2>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Post Card 1 -->
-                        <div class="bg-white/10 rounded-lg overflow-hidden group reveal-on-scroll">
-                            <img src="https://images.unsplash.com/photo-1609619385012-10d37893334a?auto=format&fit=crop&w=600&q=80" alt="Blog post image" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-center mb-12 reveal-on-scroll">Nos vidéos éducatives</h2>
+                    <p class="text-center text-white/80 mb-12 max-w-2xl mx-auto reveal-on-scroll">Découvrez nos interventions et présentations lors des congrès d'ophtalmologie de la Emirates Society of Ophthalmology</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <!-- Blog Card 1 -->
+                        <div class="bg-white/10 rounded-lg overflow-hidden group reveal-on-scroll backdrop-blur-sm">
+                            <div class="relative pb-[56.25%] h-0 overflow-hidden">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full rounded-t-lg"
+                                    src="https://www.youtube.com/embed/SJmDYGX1KEM" 
+                                    title="Emirates Society of Ophthalmology - Video 1"
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
                             <div class="p-6">
-                                <span class="text-sm text-theme-accent font-semibold">LOREM</span>
-                                <h3 class="font-bold text-xl font-display my-2">Consectetur adipiscing elit sed do eiusmod</h3>
-                                <a href="#" class="font-semibold hover:text-theme-accent transition">Lire l'article →</a>
+                                <span class="text-sm text-theme-accent font-semibold">PODCAST</span>
+                                <h3 class="font-bold text-xl font-display my-2">ES2024 Day2 Session VI: New Technologies in Retina & Diagnosis</h3>
+                                <p class="text-white/80 text-sm">Technologies innovantes en rétine et diagnostic - Emirates Society of Ophthalmology</p>
                             </div>
                         </div>
-                        <!-- Post Card 2 -->
-                        <div class="bg-white/10 rounded-lg overflow-hidden group reveal-on-scroll" style="transition-delay: 150ms;">
-                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Blog post image" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
-                            <div class="p-6">
-                                <span class="text-sm text-theme-accent font-semibold">IPSUM</span>
-                                <h3 class="font-bold text-xl font-display my-2">Tempor incididunt ut labore et dolore magna</h3>
-                                <a href="#" class="font-semibold hover:text-theme-accent transition">Lire l'article →</a>
+                        
+                        <!-- Blog Card 2 -->
+                        <div class="bg-white/10 rounded-lg overflow-hidden group reveal-on-scroll backdrop-blur-sm" style="transition-delay: 150ms;">
+                            <div class="relative pb-[56.25%] h-0 overflow-hidden">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full rounded-t-lg"
+                                    src="https://www.youtube.com/embed/cgfRME0dKFk" 
+                                    title="Emirates Society of Ophthalmology - Video 2"
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
                             </div>
-                        </div>
-                        <!-- Post Card 3 -->
-                        <div class="bg-white/10 rounded-lg overflow-hidden group reveal-on-scroll" style="transition-delay: 300ms;">
-                            <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=600&q=80" alt="Blog post image" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
                             <div class="p-6">
-                                <span class="text-sm text-theme-accent font-semibold">DOLOR</span>
-                                <h3 class="font-bold text-xl font-display my-2">Enim ad minim veniam quis nostrud exercitation</h3>
-                                <a href="#" class="font-semibold hover:text-theme-accent transition">Lire l'article →</a>
+                                <span class="text-sm text-theme-accent font-semibold">PODCAST</span>
+                                <h3 class="font-bold text-xl font-display my-2">ES2024 Day1 Session IV: Glaucoma Management & Recent Advances</h3>
+                                <p class="text-white/80 text-sm">Gestion du glaucome et avancées récentes - Emirates Society of Ophthalmology</p>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Blog Card 3 -->
+                        <div class="bg-white/10 rounded-lg overflow-hidden group reveal-on-scroll backdrop-blur-sm" style="transition-delay: 300ms;">
+                            <div class="relative pb-[56.25%] h-0 overflow-hidden">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full rounded-t-lg"
+                                    src="https://www.youtube.com/embed/X9XoPj0HbwU" 
+                                    title="Emirates Society of Ophthalmology - Video 3"
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="p-6">
+                                <span class="text-sm text-theme-accent font-semibold">PODCAST</span>
+                                <h3 class="font-bold text-xl font-display my-2">ES2024 Day2 Session III: Refractive Surgery Innovations</h3>
+                                <p class="text-white/80 text-sm">Innovations en chirurgie réfractive - Emirates Society of Ophthalmology</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Blog Card 4 -->
+                        <div class="bg-white/10 rounded-lg overflow-hidden group reveal-on-scroll backdrop-blur-sm" style="transition-delay: 450ms;">
+                            <div class="relative pb-[56.25%] h-0 overflow-hidden">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full rounded-t-lg"
+                                    src="https://www.youtube.com/embed/-cKneA-nB8Q" 
+                                    title="Emirates Society of Ophthalmology - Video 4"
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="p-6">
+                                <span class="text-sm text-theme-accent font-semibold">PODCAST</span>
+                                <h3 class="font-bold text-xl font-display my-2">ES2024 Day1 Session II: Corneal Transplantation & Advanced Procedures</h3>
+                                <p class="text-white/80 text-sm">Greffe cornéenne et procédures avancées - Emirates Society of Ophthalmology</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-12">
+                        <a href="https://www.youtube.com/@EmiratesSocietyofOphthalmology" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            Voir plus de vidéos
+                        </a>
+                    </div>
                  </div>
+            </section>
+            
+            <!-- 6. Articles -->
+            <section id="articles" class="flex items-center justify-center bg-white py-20 px-6">
+                <div class="container mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary reveal-on-scroll">Articles Scientifiques</h2>
+                        <p class="text-lg text-gray-600 mt-2 reveal-on-scroll">Découvrez nos publications et recherches en ophtalmologie</p>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <!-- Article Card -->
+                        <div class="bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden max-w-md hover:shadow-2xl transition-shadow duration-300 reveal-on-scroll">
+                            <!-- Article Image -->
+                            <div class="relative h-48 bg-gradient-to-br from-theme-primary to-theme-accent">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i class="fas fa-file-medical text-6xl text-white/50"></i>
+                                </div>
+                                <div class="absolute top-4 left-4">
+                                    <span class="bg-theme-accent text-white text-xs px-3 py-1 rounded-full font-semibold">RECHERCHE</span>
+                                </div>
+                                <div class="absolute bottom-4 right-4">
+                                    <span class="bg-white/20 text-white text-xs px-2 py-1 rounded">2024</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Article Content -->
+                            <div class="p-6">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 bg-theme-accent rounded-full flex items-center justify-center mr-3">
+                                        <i class="fas fa-user-md text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-theme-primary">Dr. Doha Hamidallah</p>
+                                        <p class="text-xs text-gray-500">Ophtalmologue</p>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="font-bold text-xl text-gray-800 mb-3 font-display">Quand l'ophtalmologue devient patient de chirurgie réfractive</h3>
+                                
+                                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                                    Découvrez le témoignage unique du Dr. Doha Hamidallah qui partage son expérience personnelle en tant que patiente de chirurgie réfractive. Une perspective rare et authentique sur le parcours du chirurgien qui devient patient...
+                                </p>
+                                
+                                <!-- Article Meta -->
+                                <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-calendar mr-1"></i>
+                                        <span>15 Janvier 2024</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>8 min de lecture</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Tags -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-theme-light text-theme-primary text-xs px-2 py-1 rounded-full">SMILE</span>
+                                    <span class="bg-theme-light text-theme-primary text-xs px-2 py-1 rounded-full">LASIK</span>
+                                    <span class="bg-theme-light text-theme-primary text-xs px-2 py-1 rounded-full">Innovation</span>
+                                </div>
+                                
+                                <!-- Read More Button -->
+                                <a href="article1.html" class="inline-flex items-center bg-theme-primary hover:bg-theme-accent text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 group">
+                                    Lire l'article complet
+                                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- View All Articles Button -->
+                    <div class="text-center mt-12">
+                        <a href="#articles" class="inline-flex items-center bg-theme-light hover:bg-theme-primary hover:text-white text-theme-primary px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                            <i class="fas fa-newspaper mr-2"></i>
+                            Voir tous les articles
+                        </a>
+                    </div>
+                </div>
             </section>
             
             <!-- This section is left for future use as per the plan -->
@@ -487,8 +823,8 @@
             <section id="contact" class="flex items-center justify-center bg-theme-light py-20 px-6">
                 <div class="container mx-auto">
                     <div class="text-center mb-12">
-                         <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary reveal-on-scroll">Lorem ipsum dolor sit amet consectetur</h2>
-                         <p class="text-lg text-gray-600 mt-2 reveal-on-scroll">Adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                         <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary reveal-on-scroll">Contactez-nous pour une consultation</h2>
+                         <p class="text-lg text-gray-600 mt-2 reveal-on-scroll">Nous sommes à votre écoute pour toute question ou demande de rendez-vous.</p>
                     </div>
                     <div class="grid lg:grid-cols-2 gap-10">
                         <!-- Form -->
@@ -540,9 +876,201 @@
         </main>
         
         <!-- Footer -->
-        <footer class="bg-theme-primary text-white/60 text-center p-6 text-sm">
-            © 2024 Dr. Hamidallah Doha. Tous droits réservés. | <a href="#" class="hover:text-white">Mentions Légales</a>
+        <footer class="bg-theme-primary text-white">
+            <div class="container mx-auto px-6 py-12">
+                <!-- Footer Content -->
+                <div class="grid md:grid-cols-4 gap-8">
+                    <!-- Company Info -->
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">Dr. Doha Hamidallah</h3>
+                        <p class="text-white/80 mb-4 max-w-md">Ophtalmologue spécialisée en chirurgie réfractive, offrant des soins oculaires de pointe avec une approche humaine et préventive au Maroc.</p>
+                        <div class="flex items-center text-white/80 mb-2">
+                            <svg class="w-5 h-5 mr-3 text-theme-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Casablanca, Maroc</span>
+                        </div>
+                        <div class="flex items-center text-white/80 mb-2">
+                            <svg class="w-5 h-5 mr-3 text-theme-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <a href="tel:+212123456789" class="hover:text-white transition-colors">+212 123 456 789</a>
+                        </div>
+                        <div class="flex items-center text-white/80">
+                            <svg class="w-5 h-5 mr-3 text-theme-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <a href="mailto:contact@drhamidallah.ma" class="hover:text-white transition-colors">contact@drhamidallah.ma</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="font-bold text-white mb-4">Navigation Rapide</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#a-propos" class="text-white/80 hover:text-white transition-colors">À propos</a></li>
+                            <li><a href="#services" class="text-white/80 hover:text-white transition-colors">Nos Services</a></li>
+                            <li><a href="#chirurgie-refractive" class="text-white/80 hover:text-white transition-colors">Chirurgie Réfractive</a></li>
+                            <li><a href="#blog" class="text-white/80 hover:text-white transition-colors">Blog</a></li>
+                            <li><a href="#articles" class="text-white/80 hover:text-white transition-colors">Articles</a></li>
+                            <li><a href="#contact" class="text-white/80 hover:text-white transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Services -->
+                    <div>
+                        <h4 class="font-bold text-white mb-4">Nos Spécialités</h4>
+                        <ul class="space-y-2 text-white/80">
+                            <li>SMILE & LASIK</li>
+                            <li>Chirurgie de la Cataracte</li>
+                            <li>Suivi Glaucome</li>
+                            <li>DMLA</li>
+                            <li>Ophtalmologie Pédiatrique</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Social Media & Bottom Bar -->
+                <div class="border-t border-white/20 mt-8 pt-8">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <!-- Social Media -->
+                        <div class="mb-4 md:mb-0">
+                            <h4 class="font-bold text-white mb-4 text-center md:text-left">Suivez-nous</h4>
+                            <div class="flex space-x-4 justify-center md:justify-start">
+                                <!-- Facebook -->
+                                <a href="https://facebook.com/drhamidallah" target="_blank" rel="noopener noreferrer"
+                                   class="w-10 h-10 bg-white/10 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 group">
+                                    <i class="fab fa-facebook-f text-white"></i>
+                                </a>                                <!-- Instagram -->
+                                <a href="https://instagram.com/drhamidallah" target="_blank" rel="noopener noreferrer"
+                                   class="w-10 h-10 bg-white/10 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 rounded-full flex items-center justify-center transition-all duration-300">
+                                    <i class="fab fa-instagram text-white"></i>
+                                </a>
+                                
+                                <!-- YouTube -->
+                                <a href="https://youtube.com/@drhamidallah" target="_blank" rel="noopener noreferrer"
+                                   class="w-10 h-10 bg-white/10 hover:bg-red-600 rounded-full flex items-center justify-center transition-all duration-300">
+                                    <i class="fab fa-youtube text-white"></i>
+                                </a>
+                                
+                                <!-- WhatsApp -->
+                                <a href="https://wa.me/212123456789?text=Bonjour%20Dr.%20Hamidallah,%20je%20souhaiterais%20prendre%20rendez-vous" target="_blank" rel="noopener noreferrer"
+                                   class="w-10 h-10 bg-white/10 hover:bg-green-500 rounded-full flex items-center justify-center transition-all duration-300">
+                                    <i class="fab fa-whatsapp text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Copyright & Legal -->
+                        <div class="text-center md:text-right">
+                            <p class="text-white/60 text-sm mb-2">© 2024 Dr. Doha Hamidallah. Tous droits réservés.</p>
+                            <div class="flex space-x-4 text-white/60 text-sm justify-center md:justify-end">
+                                <a href="#" class="hover:text-white transition-colors">Mentions Légales</a>
+                                <a href="#" class="hover:text-white transition-colors">Politique de Confidentialité</a>
+                                <a href="#" class="hover:text-white transition-colors">CGU</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
+    </div>
+    
+    <!-- Floating WhatsApp Button -->
+    <div x-data="{ 
+        showWhatsApp: false, 
+        message: 'Bonjour Dr. Hamidallah,\n\nJe souhaiterais prendre rendez-vous pour une consultation en ophtalmologie.\n\nMerci.',
+        phoneNumber: '212123456789'
+    }" class="fixed bottom-6 right-6 z-50">
+        
+        <!-- WhatsApp Floating Button -->
+        <button 
+            @click="showWhatsApp = !showWhatsApp"
+            class="bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full p-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 animate-bounce flex items-center justify-center"
+            style="animation-iteration-count: 3; animation-delay: 2s;">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </button>
+
+        <!-- WhatsApp Chat Popup -->
+        <div 
+            x-show="showWhatsApp" 
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform scale-95"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-95"
+            @click.away="showWhatsApp = false"
+            class="absolute bottom-20 right-0 bg-white rounded-lg shadow-2xl border border-gray-200 w-80 max-w-[calc(100vw-3rem)] overflow-hidden">
+            
+            <!-- Header -->
+            <div class="bg-green-500 text-white p-4 flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Dr. Doha Hamidallah</h4>
+                        <p class="text-sm text-green-100">Ophtalmologue</p>
+                    </div>
+                </div>
+                <button @click="showWhatsApp = false" class="text-white/80 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Chat Content -->
+            <div class="p-4">
+                <!-- Welcome Message -->
+                <div class="mb-4">
+                    <div class="bg-green-50 p-3 rounded-lg mb-2">
+                        <p class="text-sm text-gray-700">👋 Bonjour ! Comment puis-je vous aider aujourd'hui ?</p>
+                    </div>
+                    <p class="text-xs text-gray-500">Répondez généralement en quelques minutes</p>
+                </div>
+                
+                <!-- Message Input -->
+                <div class="space-y-3">
+                    <label class="block text-sm font-medium text-gray-700">Votre message :</label>
+                    <textarea 
+                        x-model="message"
+                        rows="4" 
+                        class="w-full p-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
+                        placeholder="Tapez votre message ici..."></textarea>
+                    
+                    <!-- Quick Messages -->
+                    <div class="space-y-2">
+                        <p class="text-xs text-gray-600">Messages rapides :</p>
+                        <div class="flex flex-wrap gap-2">
+                            <button 
+                                @click="message = 'Bonjour Dr. Hamidallah, je souhaiterais prendre rendez-vous pour une consultation.'"
+                                class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+                                📅 Rendez-vous
+                            </button>
+                            <button 
+                                @click="message = 'Bonjour, j\'aimerais avoir des informations sur la chirurgie réfractive LASIK.'"
+                                class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+                                👁️ LASIK
+                            </button>
+                            <button 
+                                @click="message = 'Bonjour, quels sont vos tarifs pour une consultation d\'ophtalmologie ?'"
+                                class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+                                💰 Tarifs
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Send Button -->
+                    <button 
+                        @click="window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank'); showWhatsApp = false"
+                        class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Envoyer sur WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
     
     <!-- JS for scroll animations -->
