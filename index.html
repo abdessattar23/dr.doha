@@ -129,9 +129,12 @@
                 class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
                 @click.away="closeAllDropdowns()">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#accueil" class="text-2xl font-display font-bold text-white hover:text-theme-accent transition-colors">
-                    Dr. Doha Hamidallah
-                </a>
+                <div class="flex items-center">
+                    <img src="./assets/logo.webp" alt="Dr. Doha Hamidallah Logo" class="w-20 h-20 mr-3">
+                    <a href="#accueil" class="text-2xl font-display font-bold text-white hover:text-theme-accent transition-colors">
+                        Dr. Doha Hamidallah
+                    </a>
+                </div>
                 
                 <!-- Desktop Nav -->
                 <nav class="hidden lg:flex space-x-1 text-white font-medium">
@@ -386,6 +389,136 @@
                         
                         <div class="mt-8 p-4 bg-theme-primary/5 rounded-lg border-l-4 border-theme-primary">
                             <p class="text-sm text-gray-700 italic">"Je vous invite à découvrir l'ensemble des services personnalisés que je propose, avec pour objectif commun : prendre soin de votre vision, aujourd'hui et pour demain."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cabinet Gallery Section -->
+            <section id="cabinet-gallery" class="flex items-center justify-center bg-gradient-to-br from-theme-light to-white py-20 px-6">
+                <div class="container mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold font-display text-theme-primary reveal-on-scroll">Notre Cabinet</h2>
+                        <p class="text-lg text-gray-600 mt-2 reveal-on-scroll">Un espace moderne et chaleureux dédié à votre bien-être visuel</p>
+                        <div class="w-24 h-1 bg-theme-accent mx-auto mt-6 reveal-on-scroll"></div>
+                    </div>
+                    
+                    <!-- Gallery Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+                        <!-- Large Featured Image -->
+                        <div class="col-span-2 row-span-2 group reveal-on-scroll">
+                            <div class="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-xl">
+                                <img src="./assets/cabinet1.jpg" alt="Salle d'attente moderne" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div class="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
+                                    <h3 class="font-bold text-lg">Salle d'attente</h3>
+                                    <p class="text-sm text-white/80">Espace confortable et moderne</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Medium Image 1 -->
+                        <div class="col-span-1 row-span-1 group reveal-on-scroll" style="transition-delay: 150ms;">
+                            <div class="relative h-36 md:h-44 rounded-lg overflow-hidden shadow-lg">
+                                <img src="./assets/cabinet2.jpg" alt="Salle de consultation" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-theme-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-white text-center transform scale-75 group-hover:scale-100 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                                        <i class="fas fa-stethoscope text-2xl mb-2"></i>
+                                        <p class="text-xs font-semibold">Consultation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Medium Image 2 -->
+                        <div class="col-span-1 row-span-1 group reveal-on-scroll" style="transition-delay: 300ms;">
+                            <div class="relative h-36 md:h-44 rounded-lg overflow-hidden shadow-lg">
+                                <img src="./assets/cabinet3.jpg" alt="Équipement médical" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-theme-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-white text-center transform scale-75 group-hover:scale-100 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                                        <i class="fas fa-microscope text-2xl mb-2"></i>
+                                        <p class="text-xs font-semibold">Équipements</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Small Image 1 -->
+                        <div class="col-span-1 group reveal-on-scroll" style="transition-delay: 450ms;">
+                            <div class="relative h-24 md:h-32 rounded-lg overflow-hidden shadow-md">
+                                <img src="./assets/cabinet4.jpg" alt="Détail architectural" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-br from-theme-primary/30 to-theme-accent/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Small Image 2 -->
+                        <div class="col-span-1 group reveal-on-scroll" style="transition-delay: 600ms;">
+                            <div class="relative h-24 md:h-32 rounded-lg overflow-hidden shadow-md">
+                                <img src="./assets/cabinet5.jpg" alt="Accueil" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-br from-theme-accent/30 to-theme-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tall Image -->
+                        <div class="col-span-1 row-span-2 group reveal-on-scroll" style="transition-delay: 750ms;">
+                            <div class="relative h-60 md:h-80 rounded-xl overflow-hidden shadow-lg">
+                                <img src="./assets/cabinet6.jpg" alt="Vue d'ensemble du cabinet" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div class="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
+                                    <h3 class="font-bold">Vue d'ensemble</h3>
+                                    <p class="text-xs text-white/80">Architecture moderne</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Wide Image -->
+                        <div class="col-span-2 group reveal-on-scroll" style="transition-delay: 900ms;">
+                            <div class="relative h-32 md:h-40 rounded-lg overflow-hidden shadow-lg">
+                                <img src="./assets/cabinet7.jpg" alt="Salle d'examen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-r from-theme-primary/40 via-transparent to-theme-accent/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-white text-center transform scale-90 group-hover:scale-100 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                                        <i class="fas fa-eye text-3xl mb-2"></i>
+                                        <p class="font-semibold">Salle d'Examen</p>
+                                        <p class="text-sm text-white/80">Technologie de pointe</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Description -->
+                    <div class="text-center mt-16 max-w-3xl mx-auto reveal-on-scroll">
+                        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                            <h3 class="text-2xl font-bold text-theme-primary mb-4">Un environnement pensé pour votre confort</h3>
+                            <p class="text-gray-700 leading-relaxed mb-6">
+                                Notre cabinet moderne allie technologie de pointe et atmosphère chaleureuse. Chaque espace a été conçu pour offrir une expérience patient optimale, de l'accueil à la consultation, en passant par les examens spécialisés.
+                            </p>
+                            <div class="grid md:grid-cols-3 gap-6 text-center">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-theme-primary rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-shield-alt text-white"></i>
+                                    </div>
+                                    <h4 class="font-semibold text-theme-primary mb-2">Hygiène & Sécurité</h4>
+                                    <p class="text-sm text-gray-600">Protocoles stricts pour votre protection</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-theme-accent rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-laptop-medical text-white"></i>
+                                    </div>
+                                    <h4 class="font-semibold text-theme-primary mb-2">Technologie Avancée</h4>
+                                    <p class="text-sm text-gray-600">Équipements dernière génération</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-theme-primary rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-heart text-white"></i>
+                                    </div>
+                                    <h4 class="font-semibold text-theme-primary mb-2">Accueil Personnalisé</h4>
+                                    <p class="text-sm text-gray-600">Accompagnement sur mesure</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -747,10 +880,9 @@
                         <!-- Article Card -->
                         <div class="bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden max-w-md hover:shadow-2xl transition-shadow duration-300 reveal-on-scroll">
                             <!-- Article Image -->
-                            <div class="relative h-48 bg-gradient-to-br from-theme-primary to-theme-accent">
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <i class="fas fa-file-medical text-6xl text-white/50"></i>
-                                </div>
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="./assets/article1.png" alt="Quand l'ophtalmologue devient patient de chirurgie réfractive" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/20"></div>
                                 <div class="absolute top-4 left-4">
                                     <span class="bg-theme-accent text-white text-xs px-3 py-1 rounded-full font-semibold">RECHERCHE</span>
                                 </div>
@@ -781,7 +913,7 @@
                                 <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
                                     <div class="flex items-center">
                                         <i class="fas fa-calendar mr-1"></i>
-                                        <span>15 Janvier 2024</span>
+                                        <span>26 Juillet 2025</span>
                                     </div>
                                     <div class="flex items-center">
                                         <i class="fas fa-clock mr-1"></i>
@@ -860,7 +992,7 @@
                         <div class="flex flex-col reveal-on-scroll" style="transition-delay: 200ms;">
                             <div class="h-64 md:h-80 lg:h-full w-full rounded-lg overflow-hidden shadow-xl">
                                 <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.991625693759!2d2.292292615674384!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1677353982855!5m2!1sfr!2sfr" 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.224439202671!2d-7.621707724632837!3d33.56938964307268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d316935f7adf%3A0x98cebc7de9e6c08c!2sCabinet%20d%E2%80%99ophtalmologie%20Dr%20Hamidallah%20Doha!5e1!3m2!1sen!2sma!4v1753545870006!5m2!1sen!2sma" 
                                     width="100%" 
                                     height="100%" 
                                     style="border:0;" 
