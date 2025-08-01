@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+<!-- Homepage -->
+<url>
+    <loc>https://dohaophtalmologue.com/</loc>
+    <lastmod>2025-07-30T10:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <mobile:mobile/>
+    <image:image>
+        <image:loc>https://dohaophtalmologue.com/assets/doctor-photo.jpg</image:loc>
+        <image:title>Dr. Doha Hamidallah - Ophtalmologue Casablanca</image:title>
+        <image:caption>Cabinet d'ophtalmologie moderne spécialisé en chirurgie réfractive</image:caption>
+    </image:image>
+    <image:image>
+        <image:loc>https://dohaophtalmologue.com/assets/logo.webp</image:loc>
+        <image:title>Logo Cabinet Dr. Doha Hamidallah</image:title>
+        <image:caption>Cabinet d'ophtalmologie Casablanca</image:caption>
+    </image:image>
+</url>
+
+<!-- À Propos Section -->
+<url>
+    <loc>https://dohaophtalmologue.com/#a-propos</loc>
+    <lastmod>2025-07-30T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+</url>
+
+<!-- Services Section -->
+<url>
+    <loc>https://dohaophtalmologue.com/#services</loc>
+    <lastmod>2025-07-30T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+</url>
+
+<!-- Chirurgie Réfractive Section -->
+<url>
+    <loc>https://dohaophtalmologue.com/#chirurgie-refractive</loc>
+    <lastmod>2025-07-30T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+</url>
+
+<!-- Cabinet Gallery Section -->
+<url>
+    <loc>https://dohaophtalmologue.com/#cabinet-gallery</loc>
+    <lastmod>2025-07-30T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <mobile:mobile/>
+    <image:image>
+        <image:loc>https://dohaophtalmologue.com/assets/cabinet/salle-attente.jpg</image:loc>
+        <image:title>Salle d'attente moderne - Cabinet Dr. Doha</image:title>
+        <image:caption>Salle d'attente confortable et moderne</image:caption>
+    </image:image>
+    <image:image>
+        <image:loc>https://dohaophtalmologue.com/assets/cabinet/equipement.png</image:loc>
+        <image:title>Équipement médical moderne - Cabinet Dr. Doha</image:title>
+        <image:caption>Équipements ophtalmologiques de dernière génération</image:caption>
+    </image:image>
+</url>
+
+<!-- Blog/Videos Section -->
+<url>
+    <loc>https://dohaophtalmologue.com/#blog</loc>
+    <lastmod>2025-07-30T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+</url>
+
+<!-- Articles Section -->
+<url>
+    <loc>https://dohaophtalmologue.com/#articles</loc>
+    <lastmod>2025-07-30T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+</url>
+
+<!-- Article Page -->
+<url>
+    <loc>https://dohaophtalmologue.com/article1.html</loc>
+    <lastmod>2025-07-30T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <mobile:mobile/>
+    <image:image>
+        <image:loc>https://dohaophtalmologue.com/assets/article1.png</image:loc>
+        <image:title>Quand l'ophtalmologue devient patient de chirurgie réfractive</image:title>
+        <image:caption>Article du Dr. Doha Hamidallah sur son expérience personnelle</image:caption>
+    </image:image>
+</url>
+
+<!-- Contact Section -->
+<url>
+    <loc>https://dohaophtalmologue.com/#contact</loc>
+    <lastmod>2025-07-30T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+</url>
+
+</urlset>

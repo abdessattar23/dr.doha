@@ -1,0 +1,263 @@
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://dohaophtalmologue.com/#website",
+            "url": "https://dohaophtalmologue.com/",
+            "name": "Cabinet Dr. Doha Hamidallah",
+            "description": "Cabinet d'ophtalmologie moderne à Casablanca spécialisé en chirurgie réfractive LASIK, SMILE, PKR",
+            "publisher": {
+                "@id": "https://dohaophtalmologue.com/#organization"
+            },
+            "potentialAction": [
+                {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://dohaophtalmologue.com/?s={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            ],
+            "inLanguage": "fr-MA"
+        },
+        {
+            "@type": [
+                "MedicalOrganization",
+                "LocalBusiness"
+            ],
+            "@id": "https://dohaophtalmologue.com/#organization",
+            "name": "Cabinet Dr. Doha Hamidallah",
+            "url": "https://dohaophtalmologue.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://dohaophtalmologue.com/assets/logo.webp",
+                "width": 300,
+                "height": 300
+            },
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://dohaophtalmologue.com/assets/doctor-photo.jpg",
+                "width": 800,
+                "height": 600
+            },
+            "description": "Cabinet d'ophtalmologie spécialisé en chirurgie réfractive, cataracte, glaucome et soins oculaires à Casablanca, Maroc",
+            "telephone": "+212520122727",
+            "email": "doha.hamidallah@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Bd Anoual, 5ème étage appartement 54",
+                "addressLocality": "Casablanca",
+                "postalCode": "20360",
+                "addressRegion": "Grand Casablanca",
+                "addressCountry": "MA"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "33.5731",
+                "longitude": "-7.5898"
+            },
+            "openingHoursSpecification": [
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday"
+                    ],
+                    "opens": "09:00",
+                    "closes": "18:00"
+                },
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "Saturday",
+                    "opens": "09:00",
+                    "closes": "13:00"
+                }
+            ],
+            "medicalSpecialty": "Ophthalmology",
+            "availableService": [
+                {
+                    "@type": "MedicalProcedure",
+                    "name": "Chirurgie Réfractive SMILE",
+                    "description": "Technique mini-invasive de correction réfractive sans volet pour myopie et astigmatisme",
+                    "procedureType": "Refractive Surgery"
+                },
+                {
+                    "@type": "MedicalProcedure",
+                    "name": "Chirurgie Réfractive LASIK",
+                    "description": "Correction de la myopie, hypermétropie et astigmatisme par laser LASIK",
+                    "procedureType": "Refractive Surgery"
+                },
+                {
+                    "@type": "MedicalProcedure",
+                    "name": "PKR TransPKR",
+                    "description": "Chirurgie de surface pour cornées fines ou irrégulières",
+                    "procedureType": "Refractive Surgery"
+                },
+                {
+                    "@type": "MedicalProcedure",
+                    "name": "Chirurgie de la Cataracte",
+                    "description": "Remplacement du cristallin opacifié par implant intraoculaire",
+                    "procedureType": "Cataract Surgery"
+                },
+                {
+                    "@type": "MedicalService",
+                    "name": "Bilan Visuel Complet",
+                    "description": "Examen approfondi pour adultes et enfants, prescription de lunettes et lentilles"
+                },
+                {
+                    "@type": "MedicalService",
+                    "name": "Suivi Glaucome et DMLA",
+                    "description": "Diagnostic précoce et prise en charge des pathologies rétiniennes"
+                },
+                {
+                    "@type": "MedicalService",
+                    "name": "Ophtalmologie Pédiatrique",
+                    "description": "Dépistage et traitement des troubles visuels chez l'enfant"
+                }
+            ],
+            "physician": {
+                "@id": "https://dohaophtalmologue.com/#physician"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "150",
+                "bestRating": "5",
+                "worstRating": "1"
+            },
+            "priceRange": "€€€",
+            "paymentAccepted": [
+                "Cash",
+                "Credit Card",
+                "Insurance"
+            ],
+            "currenciesAccepted": "MAD",
+            "hasMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.224439202671!2d-7.621707724632837!3d33.56938964307268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d316935f7adf%3A0x98cebc7de9e6c08c!2sCabinet%20d%E2%80%99ophtalmologie%20Dr%20Hamidallah%20Doha!5e1!3m2!1sen!2sma!4v1753545870006!5m2!1sen!2sma",
+            "sameAs": [
+                "https://www.instagram.com/cabinet.dr.doha.hamidallah/?igsh=MWYwZDVndWZ1MTEwbQ%3D%3D#",
+                "https://www.dabadoc.com/ma/ophtalmologue/casablanca/doha-hamidallah?booking_type=OFFICE"
+            ]
+        },
+        {
+            "@type": "Physician",
+            "@id": "https://dohaophtalmologue.com/#physician",
+            "name": "Dr. Doha Hamidallah",
+            "givenName": "Doha",
+            "familyName": "Hamidallah",
+            "honorificPrefix": "Dr.",
+            "jobTitle": "Ophtalmologue",
+            "description": "Ophtalmologue spécialisée en chirurgie réfractive avec formation internationale en France",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://dohaophtalmologue.com/assets/doctor-photo.jpg",
+                "width": 400,
+                "height": 400
+            },
+            "medicalSpecialty": [
+                "Ophthalmology",
+                "Refractive Surgery"
+            ],
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "Faculté de médecine de Casablanca"
+            },
+            "memberOf": {
+                "@id": "https://dohaophtalmologue.com/#organization"
+            },
+            "worksFor": {
+                "@id": "https://dohaophtalmologue.com/#organization"
+            },
+            "nationality": "Moroccan",
+            "gender": "Female",
+            "knowsLanguage": [
+                "French",
+                "Arabic"
+            ],
+            "hasCredential": [
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Diplôme de Médecine",
+                    "credentialCategory": "Medical Degree",
+                    "educationalLevel": "Professional"
+                },
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Spécialisation en Ophtalmologie",
+                    "credentialCategory": "Medical Specialization",
+                    "educationalLevel": "Professional"
+                }
+            ]
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://dohaophtalmologue.com/#webpage",
+            "url": "https://dohaophtalmologue.com/",
+            "name": "Dr. Doha Hamidallah - Ophtalmologue Casablanca | Chirurgie Réfractive LASIK SMILE PKR",
+            "isPartOf": {
+                "@id": "https://dohaophtalmologue.com/#website"
+            },
+            "about": {
+                "@id": "https://dohaophtalmologue.com/#organization"
+            },
+            "description": "🔹 Dr. Doha Hamidallah, ophtalmologue expert à Casablanca. Chirurgie réfractive LASIK, SMILE, PKR. Cataracte, glaucome, DMLA. Cabinet moderne Bd Anoual. Rendez-vous en ligne DabaDoc ⭐",
+            "breadcrumb": {
+                "@id": "https://dohaophtalmologue.com/#breadcrumb"
+            },
+            "inLanguage": "fr-MA",
+            "potentialAction": [
+                {
+                    "@type": "ReserveAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://www.dabadoc.com/ma/ophtalmologue/casablanca/doha-hamidallah?booking_type=OFFICE"
+                    },
+                    "result": {
+                        "@type": "Reservation",
+                        "name": "Consultation Ophtalmologie"
+                    }
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://dohaophtalmologue.com/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://dohaophtalmologue.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "À propos",
+                    "item": "https://dohaophtalmologue.com/#a-propos"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Services",
+                    "item": "https://dohaophtalmologue.com/#services"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "Chirurgie Réfractive",
+                    "item": "https://dohaophtalmologue.com/#chirurgie-refractive"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "name": "Contact",
+                    "item": "https://dohaophtalmologue.com/#contact"
+                }
+            ]
+        }
+    ]
+}

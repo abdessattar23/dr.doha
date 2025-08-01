@@ -1,0 +1,71 @@
+# Robots.txt for Dr. Doha Hamidallah Ophthalmology Practice
+# Website: https://dohaophtalmologue.com
+
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl medical content
+Allow: /assets/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.webp
+Allow: /*.jpg
+Allow: /*.png
+Allow: /*.pdf
+
+# Medical content priorities
+Allow: /#a-propos
+Allow: /#services
+Allow: /#chirurgie-refractive
+Allow: /#cabinet-gallery
+Allow: /#blog
+Allow: /#articles
+Allow: /#contact
+Allow: /article1.html
+
+# Disallow sensitive areas (if any in future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://dohaophtalmologue.com/sitemap.xml
+
+# Medical search engines
+User-agent: Healthbot
+Allow: /
+
+User-agent: MedicalBot
+Allow: /
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /assets/
+
+User-agent: Googlebot-Video
+Allow: /
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Performance notes
+# Medical websites should be crawled respectfully
+# Patient privacy and website performance are priorities
